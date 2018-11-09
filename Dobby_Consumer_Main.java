@@ -8,11 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class Dobby_Main extends JFrame implements ActionListener {
-	Dobby_Menu dMenu;
+public class Dobby_Consumer_Main extends JFrame implements ActionListener {
+	Dobby_Consumer_Menu dMenu;
 	
-	public Dobby_Main() {
-		dMenu = new Dobby_Menu();
+	public Dobby_Consumer_Main() {
+		dMenu = new Dobby_Consumer_Menu();
 		
 		this.setTitle("Dobby"); // 프레임 타이틀
 		
@@ -37,7 +37,7 @@ public class Dobby_Main extends JFrame implements ActionListener {
 	} // end Dobby_Main()
 	
 	public static void main(String[] args) {
-		new Dobby_Main();
+		new Dobby_Consumer_Main();
 
 	} // end main()
 	
@@ -106,8 +106,8 @@ public class Dobby_Main extends JFrame implements ActionListener {
     } // end mAction()
   
    private void regAction() { // 등록버튼 액션
-	   if (dMenu.mealAmountTF.getText().equals("")) {
-			JOptionPane.showMessageDialog(dMenu.table, "음식을 선택해 주세요", "주문 오류", JOptionPane.ERROR_MESSAGE);
+	   if (dMenu.mealNameTF.getText().equals("")) {
+			JOptionPane.showMessageDialog(this, "음식을 선택해 주세요!", "주문 오류!", JOptionPane.ERROR_MESSAGE);
 			return;
 		} else {
 			String[] row = new String[3];
@@ -118,7 +118,8 @@ public class Dobby_Main extends JFrame implements ActionListener {
 			
 			int fPrice = 0;
 			for(int i = 0; i < dMenu.table.getRowCount(); i++) {
-				fPrice += Integer.parseInt((String)dMenu.tableModel.getValueAt(i, 2));
+				fPrice += Integer.parseInt((String) dMenu.tableModel.getValueAt(i, 2));
+				// 테이블로 부터 금액 컬럼 값을 읽어나간 후 변수에 덧셈하여 저장
 				dMenu.fullPriceTF.setText(Integer.toString(fPrice));
 			}
 		}
@@ -133,26 +134,41 @@ public class Dobby_Main extends JFrame implements ActionListener {
 	private void delAction() { // 삭제버튼 액션
 		int row = dMenu.table.getSelectedRow();
 		if (row == -1) {
-			JOptionPane.showMessageDialog(dMenu.table, "주문 제거할 메뉴를 선택해주세요.");
+			JOptionPane.showMessageDialog(this, "주문 제거할 메뉴를 선택해주세요!", "주문 오류!", JOptionPane.ERROR_MESSAGE);
 			return;
 		} // 삭제할 게 없으면 출력
 		dMenu.tableModel.removeRow(row);// 행삭제
 		
 		int fPrice = 0;
-		
-		for(int i = 0; i < dMenu.table.getRowCount(); i++) {
-			fPrice += Integer.parseInt((String)dMenu.tableModel.getValueAt(i, 2));
-			dMenu.fullPriceTF.setText(Integer.toString(fPrice));
-		}
+		if(dMenu.table.getRowCount() == 0)
+			dMenu.fullPriceTF.setText(Integer.toString(0)); // 행이 없을 경우 주문하려는 메뉴가 없는 것 이므로 총 가격 0으로 설정
+		else {
+			for(int i = 0; i < dMenu.table.getRowCount(); i++) {			
+				fPrice += Integer.parseInt((String) dMenu.tableModel.getValueAt(i, 2));
+				// 테이블로 부터 금액 컬럼 값을 읽어나간 후 변수에 덧셈하여 저장
+				dMenu.fullPriceTF.setText(Integer.toString(fPrice));			
+			}
+		}		
 	} // end delAction()
 
 	private void decAction() { // 결정버튼 액션
-		int chk = JOptionPane.showConfirmDialog(dMenu.table, "주문 결정하시겠습니까?", "주문 결정", JOptionPane.YES_NO_OPTION);
+		if (dMenu.fullPriceTF.getText().equals(Integer.toString(0))) {
+			// 메뉴를 등록하지 않았으면 총 가격이 0이므로 메뉴를 등록한 후에 결정버튼을 누를 수 있도록 메세지 출력
+			JOptionPane.showMessageDialog(this, "음식을 먼저 등록해주세요!", "주문 오류!", JOptionPane.ERROR_MESSAGE);
+			return;
+		} else if(Integer.parseInt(dMenu.fullPriceTF.getText()) < 16500) {
+			//16500원 이상부터 주문 결정 가능
+			JOptionPane.showMessageDialog(this, "16500원 이상 부터 주문 가능 합니다!", "주문 오류!", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+				
+		int chk = JOptionPane.showConfirmDialog(this, "주문 결정하시겠습니까?", "주문 결정", JOptionPane.YES_NO_OPTION);
 
 		if (chk == JOptionPane.NO_OPTION) {
 			return;
 		} else if (chk == JOptionPane.YES_OPTION) {
 			dMenu.tableModel.setRowCount(0); // table 초기화
+			dMenu.fullPriceTF.setText(Integer.toString(0)); // 총 금액 초기화
 		}
 	} // end decAction()
 }

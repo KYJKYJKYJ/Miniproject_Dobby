@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
-public class Dobby_Menu extends JPanel{
+public class Dobby_Consumer_Menu extends JPanel{
    //음식이름, 음식가격, 음식수량, 총 가격에 대한 라벨
    JLabel mealNameL, mealPriceL, mealAmountL, fullPriceL;
    //음식이름, 음식가격에 대한 텍스트필드
@@ -29,7 +29,7 @@ public class Dobby_Menu extends JPanel{
    //테이블 헤드 이름
    String[] cols = { "음식명", "수량", "금액" };
 
-   public Dobby_Menu() {
+   public Dobby_Consumer_Menu() {
       //JLabel 부분
       mealNameL = new JLabel("음식명");
       mealPriceL = new JLabel("음식가격");
@@ -49,6 +49,7 @@ public class Dobby_Menu extends JPanel{
       mealPriceTF = new JTextField(10);
       mealAmountTF = new JTextField(10);
       fullPriceTF = new JTextField(10);
+      fullPriceTF.setText(Integer.toString(0));
       
       mealNameTF.setEditable(false); // 음식을 고르면 값, 이름을 출력하기 위해 수정 불가 설정
       mealPriceTF.setEditable(false);
