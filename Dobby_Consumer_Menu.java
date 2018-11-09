@@ -39,11 +39,16 @@ public class Dobby_Consumer_Menu extends JPanel{
       mealAmountL = new JLabel("음식수량");
       fullPriceL = new JLabel("총 금액");
 
+      mealNameL.setFont(new Font("맑은 고딕", 1, 25));
+      mealPriceL.setFont(new Font("맑은 고딕", 1, 25));
+      mealAmountL.setFont(new Font("맑은 고딕", 1, 25));
+      fullPriceL.setFont(new Font("맑은 고딕", 1, 15));
+      
       //라벨 위치 조정
       mealNameL.setHorizontalAlignment(JLabel.CENTER);
       mealPriceL.setHorizontalAlignment(JLabel.CENTER);
-      mealPriceL.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 30));
-      mealAmountL.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
+      mealPriceL.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
+      mealAmountL.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
       
       fullPriceL.setHorizontalAlignment(JLabel.CENTER);
       
@@ -53,6 +58,12 @@ public class Dobby_Consumer_Menu extends JPanel{
       mealAmountTF = new JTextField(10);
       fullPriceTF = new JTextField(10);
       fullPriceTF.setText(Integer.toString(0));
+      
+      mealNameTF.setHorizontalAlignment(JTextField.CENTER);
+      mealPriceTF.setHorizontalAlignment(JTextField.CENTER);
+      mealAmountTF.setHorizontalAlignment(JTextField.CENTER);
+      fullPriceTF.setHorizontalAlignment(JTextField.CENTER);
+      
       
       mealNameTF.setEditable(false); // 음식을 고르면 값, 이름을 출력하기 위해 수정 불가 설정
       mealPriceTF.setEditable(false);
