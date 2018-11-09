@@ -73,11 +73,11 @@ public class Dobby_Main extends JFrame implements ActionListener {
 	
 	private void meal_Actions(String name, int price, 
 			JTextField nameTF, JTextField priceTF, JTextField amountTF) {
-		int amount = 1;
+		int amount = 1; // 메뉴를 누를 경우 기본 수량을 1로 하여 메뉴 선택
 		nameTF.setText(name);
 		priceTF.setText(Integer.toString(price));
 		amountTF.setText(Integer.toString(amount));
-   } // 메뉴를 누를 경우 기본 수량을 1로 하여 메뉴 선택 // end meal_Actions();
+	}  // end meal_Actions();
 	
 	private void pAction() {
 		if(dMenu.mealNameTF.getText().equals("")) {
@@ -90,7 +90,7 @@ public class Dobby_Main extends JFrame implements ActionListener {
 		}
 	} // end pAction()
 	
-   private void mAction() {
+    private void mAction() {
 		if(dMenu.mealNameTF.getText().equals("")) {
 			JOptionPane.showMessageDialog(this, "메뉴를 먼저 선택해주세요!", "메뉴 선택", JOptionPane.ERROR_MESSAGE);
 			return; // 메뉴 이름이 담긴 텍스트필드를 읽어서 공백일 경우 메뉴가 선택되지 않은 것이므로 메세지 출력 
@@ -103,10 +103,10 @@ public class Dobby_Main extends JFrame implements ActionListener {
 			count--;
 			dMenu.mealAmountTF.setText(Integer.toString(count));
 		}
-   } // end mAction()
+    } // end mAction()
   
    private void regAction() { // 등록버튼 액션
-		if (dMenu.mealAmountTF.getText().equals("")) {
+	   if (dMenu.mealAmountTF.getText().equals("")) {
 			JOptionPane.showMessageDialog(dMenu.table, "음식을 선택해 주세요", "주문 오류", JOptionPane.ERROR_MESSAGE);
 			return;
 		} else {
@@ -115,7 +115,14 @@ public class Dobby_Main extends JFrame implements ActionListener {
 			row[1] = dMenu.mealAmountTF.getText().trim();
 			row[2] = dMenu.mealPriceTF.getText().trim();
 			dMenu.tableModel.addRow(row); // 음식 정보를 받아서 테이블에 삽입
+			
+			int fPrice = 0;
+			for(int i = 0; i < dMenu.table.getRowCount(); i++) {
+				fPrice += Integer.parseInt((String)dMenu.tableModel.getValueAt(i, 2));
+				dMenu.fullPriceTF.setText(Integer.toString(fPrice));
+			}
 		}
+		
 		// 음식 정보 테이블 삽입 후 텍스트 필드 초기화
 		dMenu.mealNameTF.setText("");
 		dMenu.mealAmountTF.setText("");
@@ -130,7 +137,13 @@ public class Dobby_Main extends JFrame implements ActionListener {
 			return;
 		} // 삭제할 게 없으면 출력
 		dMenu.tableModel.removeRow(row);// 행삭제
-
+		
+		int fPrice = 0;
+		
+		for(int i = 0; i < dMenu.table.getRowCount(); i++) {
+			fPrice += Integer.parseInt((String)dMenu.tableModel.getValueAt(i, 2));
+			dMenu.fullPriceTF.setText(Integer.toString(fPrice));
+		}
 	} // end delAction()
 
 	private void decAction() { // 결정버튼 액션
