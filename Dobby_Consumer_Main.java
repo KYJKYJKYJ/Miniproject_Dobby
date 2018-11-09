@@ -24,11 +24,18 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//버튼 이벤트 리스너 연결
-	    dMenu.chikenB.addActionListener(this);
-	    dMenu.soyChikenB.addActionListener(this);
-	    dMenu.yangChikenB.addActionListener(this);
-	    dMenu.cokeB.addActionListener(this);
-	    dMenu.ciderB.addActionListener(this);
+	    dMenu.chickenB.addActionListener(this);
+	    dMenu.soyChickenB.addActionListener(this);
+	    dMenu.yangChickenB.addActionListener(this);
+	    dMenu.creamChickenB.addActionListener(this);
+	    dMenu.tokbokiChickenB.addActionListener(this);
+	    dMenu.marahChickenB.addActionListener(this);
+	    dMenu.shrimpChickenB.addActionListener(this);
+	    dMenu.garlicChickenB.addActionListener(this);
+	    dMenu.tokbokiChickenB.addActionListener(this);
+	    dMenu.greenOChickenB.addActionListener(this);
+	    dMenu.honeyChickenB.addActionListener(this);
+	    dMenu.snowChickenB.addActionListener(this);
 	    dMenu.plusB.addActionListener(this); 
 	    dMenu.minusB.addActionListener(this);
 	    dMenu.registerB.addActionListener(this);
@@ -44,16 +51,30 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 	@Override
 	   public void actionPerformed(ActionEvent e) {
 	      Object obj = e.getSource();
-	      if(obj == dMenu.chikenB) {
-	    	  meal_Actions("후라이드치킨", 16500, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
-	      } else if(obj == dMenu.soyChikenB) {
-	    	  meal_Actions("간장 치킨", 17000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
-	      } else if(obj == dMenu.yangChikenB) {
-	    	  meal_Actions("양념 치킨", 17000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
-	      } else if(obj == dMenu.cokeB) {
-	    	  meal_Actions("코카콜라", 1500, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
-	      } else if(obj == dMenu.ciderB) {
-	    	  meal_Actions("사이다", 1500, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	      if(obj == dMenu.chickenB) {
+	    	  meal_Actions("후라이드치킨", 10000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	      } else if(obj == dMenu.soyChickenB) {
+	    	  meal_Actions("간장치킨", 12000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	      } else if(obj == dMenu.yangChickenB) {
+	    	  meal_Actions("양념치킨", 11000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	      } else if(obj == dMenu.snowChickenB) {
+	    	  meal_Actions("스노윙치킨", 13000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	      } else if(obj == dMenu.hotbChickenB) {
+	    	  meal_Actions("핫블링치킨", 13500, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	      } else if(obj == dMenu.greenOChickenB) {
+		      meal_Actions("파닭", 12000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	      } else if(obj == dMenu.creamChickenB) {
+		      meal_Actions("크리미언치킨", 14000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	      } else if(obj == dMenu.honeyChickenB) {
+		      meal_Actions("허니멜로치킨", 14000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	      } else if(obj == dMenu.tokbokiChickenB) {
+		      meal_Actions("쌀떡볶이치킨", 14000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	      } else if(obj == dMenu.marahChickenB) {
+		      meal_Actions("마라핫치킨", 14500, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	      } else if(obj == dMenu.garlicChickenB) {
+		      meal_Actions("갈릭치킨", 15000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	      } else if(obj == dMenu.shrimpChickenB) {
+		      meal_Actions("새우치킨", 16000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } // 메뉴 선택 액션
 	      
 	      else if(obj == dMenu.plusB) {
@@ -118,7 +139,7 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 			
 			int fPrice = 0;
 			for(int i = 0; i < dMenu.table.getRowCount(); i++) {
-				fPrice += Integer.parseInt((String) dMenu.tableModel.getValueAt(i, 2));
+				fPrice += (Integer.parseInt((String) dMenu.tableModel.getValueAt(i, 2)) * Integer.parseInt((String) dMenu.tableModel.getValueAt(i, 1)));
 				// 테이블로 부터 금액 컬럼 값을 읽어나간 후 변수에 덧셈하여 저장
 				dMenu.fullPriceTF.setText(Integer.toString(fPrice));
 			}
@@ -143,10 +164,10 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 		if(dMenu.table.getRowCount() == 0)
 			dMenu.fullPriceTF.setText(Integer.toString(0)); // 행이 없을 경우 주문하려는 메뉴가 없는 것 이므로 총 가격 0으로 설정
 		else {
-			for(int i = 0; i < dMenu.table.getRowCount(); i++) {			
-				fPrice += Integer.parseInt((String) dMenu.tableModel.getValueAt(i, 2));
+			for(int i = 0; i < dMenu.table.getRowCount(); i++) {
+				fPrice += (Integer.parseInt((String) dMenu.tableModel.getValueAt(i, 2)) * Integer.parseInt((String) dMenu.tableModel.getValueAt(i, 1)));
 				// 테이블로 부터 금액 컬럼 값을 읽어나간 후 변수에 덧셈하여 저장
-				dMenu.fullPriceTF.setText(Integer.toString(fPrice));			
+				dMenu.fullPriceTF.setText(Integer.toString(fPrice));
 			}
 		}		
 	} // end delAction()
@@ -156,11 +177,11 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 			// 메뉴를 등록하지 않았으면 총 가격이 0이므로 메뉴를 등록한 후에 결정버튼을 누를 수 있도록 메세지 출력
 			JOptionPane.showMessageDialog(this, "음식을 먼저 등록해주세요!", "주문 오류!", JOptionPane.ERROR_MESSAGE);
 			return;
-		} else if(Integer.parseInt(dMenu.fullPriceTF.getText()) < 16500) {
-			//16500원 이상부터 주문 결정 가능
-			JOptionPane.showMessageDialog(this, "16500원 이상 부터 주문 가능 합니다!", "주문 오류!", JOptionPane.ERROR_MESSAGE);
+		} /*else if(Integer.parseInt(dMenu.fullPriceTF.getText()) < 10000) {
+			//10000원 이상부터 주문 결정 가능
+			JOptionPane.showMessageDialog(this, "10000원 이상 부터 주문 가능 합니다!", "주문 오류!", JOptionPane.ERROR_MESSAGE);
 			return;
-		}
+		}*/
 				
 		int chk = JOptionPane.showConfirmDialog(this, "주문 결정하시겠습니까?", "주문 결정", JOptionPane.YES_NO_OPTION);
 

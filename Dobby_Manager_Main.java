@@ -9,11 +9,38 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class Dobby_Manager extends JFrame {
+public class Dobby_Manager_Main extends JFrame {
+	Dobby_Manager_Menu dmMenu;
 	
+	public Dobby_Manager_Main() {
+		dmMenu = new Dobby_Manager_Menu();
+		
+		//프레임에 붙임
+		this.add(BorderLayout.CENTER, dmMenu);
+		this.setTitle("판매자 관리 시스템");
+		this.setSize(950, 600);
+		this.setVisible(true);
+		setResizable(false);// 크기 조절 가능 or 불가능
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public static void main(String[] args) {
+		new Dobby_Manager_Main();
+
+	}
+
+}//end class
+	
+	
+
+
+
+	
+	/*	
 	// 주문내역, 재고 수량, 판매 집계, 총매출금액 라벨
 	JLabel orderHistoryL, stockL, salesCountL ,totalSalesCountL;
 	// 주문내역 , 재고 수량, 판매 집계 테이블
@@ -23,15 +50,19 @@ public class Dobby_Manager extends JFrame {
 	JScrollPane scroll, scroll2, scroll3;
 	DefaultTableModel ohTableModel, stTableModel, scTableModel;
 	
+	//주문내역 메세지 텍스트아레아
+	JTextArea orderHistoryTA;
+	
+	//초기화 버튼
 	JButton resetB;
 	
 	
-	String[] cols = { "음식명", "수량", "금액" };
+	String[] cols = { "주문시간", "음식명", "수량", "금액" };
 	String[] cols2 = { "제품 id", "제품명", "수량" };
+	String[] cols3 = { "음식명", "수량", "금액" };*/
 	
 	
-	
-	public Dobby_Manager() {
+/*	public Dobby_Manager_Main() {
 		//JLabel 부분
 		orderHistoryL = new JLabel("주문내역");
 		stockL = new  JLabel("재고 수량");
@@ -46,6 +77,10 @@ public class Dobby_Manager extends JFrame {
 		//JTextField 부분
 		totalSalesCountTF = new JTextField(20);
 		
+		//JTextArea 부분
+		orderHistoryTA = new JTextArea("주문 확인");
+		
+		
 		//Jbutton 부분
 		resetB = new JButton("초기화");
 		
@@ -59,9 +94,10 @@ public class Dobby_Manager extends JFrame {
 		orderHistoryT = new JTable(ohTableModel);
 		scroll = new JScrollPane(orderHistoryT);
 		orderHistoryT.setRowHeight(20);//라인의 높이
-		orderHistoryT.getColumnModel().getColumn(0).setPreferredWidth(50); // 음식명
-	    orderHistoryT.getColumnModel().getColumn(1).setPreferredWidth(10); // 음식 수량
-	    orderHistoryT.getColumnModel().getColumn(2).setPreferredWidth(50); // 금액
+		orderHistoryT.getColumnModel().getColumn(0).setPreferredWidth(20); // 주문 시간
+		orderHistoryT.getColumnModel().getColumn(1).setPreferredWidth(40); // 음식명
+	    orderHistoryT.getColumnModel().getColumn(2).setPreferredWidth(10); // 음식 수량
+	    orderHistoryT.getColumnModel().getColumn(3).setPreferredWidth(20); // 금액
 	    orderHistoryT.getTableHeader().setReorderingAllowed(false); // 테이블 컬럼 이동 불가 설정
 	    orderHistoryT.setRowSelectionAllowed(false);
 	    //특정 셀이 선택되었을 때, 동일한 행에 있는 나머지 셀들이 전부 선택되는 기본 동작 불가 설정
@@ -89,7 +125,7 @@ public class Dobby_Manager extends JFrame {
 	    
 		
 		//JTable 부분 (판매 집계)
-		scTableModel = new DefaultTableModel(cols, 30) {
+		scTableModel = new DefaultTableModel(cols3, 30) {
 			public boolean isCellEditable(int row, int col) {
 	            return false;
 	         }
@@ -110,13 +146,18 @@ public class Dobby_Manager extends JFrame {
 		
 		
 	    //주문 내역 패널
-		JPanel ohPanel = new JPanel(new BorderLayout());
-		JPanel ohLPanel = new  JPanel();
+		JPanel ohPanel = new JPanel(new GridLayout(2, 1));
+		JPanel ohL_S_Panel = new  JPanel(new BorderLayout());
+		JPanel ohLPanel = new JPanel();
+		JPanel ohTAPanel = new JPanel(new BorderLayout());
 		ohLPanel.add(orderHistoryL);
-		ohPanel.add("North", ohLPanel);
-		ohPanel.add("Center", scroll);
-		ohPanel.add("South", resetB);
+		ohL_S_Panel.add("North", ohLPanel);
+		ohL_S_Panel.add("Center", scroll);
+		ohTAPanel.add("Center", orderHistoryTA);
+		ohTAPanel.add("South", resetB);
 		
+		ohPanel.add(ohL_S_Panel);
+		ohPanel.add(ohTAPanel);
 		//재고 수량 패널
 		JPanel stPanel = new JPanel(new BorderLayout());
 		JPanel stLPanel = new JPanel();
@@ -157,10 +198,5 @@ public class Dobby_Manager extends JFrame {
 		
 			
 	}//end Restaurant_Manager()
-
-	public static void main(String[] args) {
-		new Dobby_Manager();
-
-	}
-
-}//end class
+*/
+	

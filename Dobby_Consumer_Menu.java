@@ -18,7 +18,10 @@ public class Dobby_Consumer_Menu extends JPanel{
    //주문 정보를 등록, 제거, 결정 버튼
    JButton registerB, removeB, decideB;
    //음식, 음료 버튼
-   JButton chikenB, yangChikenB, soyChikenB, cokeB, ciderB;
+   JButton chickenB, yangChickenB, soyChickenB, creamChickenB, greenOChickenB, 
+   tokbokiChickenB, hotbChickenB, garlicChickenB, marahChickenB, shrimpChickenB, snowChickenB,
+   honeyChickenB;
+   
    //더하기, 빼기 버튼
    JButton plusB, minusB;
    //주문 정보를 보여줄 테이블
@@ -72,25 +75,35 @@ public class Dobby_Consumer_Menu extends JPanel{
       registerB = new JButton("주문 등록");
       removeB = new JButton("주문 제거");
       decideB = new JButton("주문 결정");
-      chikenB = new JButton(new Resizing().Icon("src/miniproject/Chicken.jpg")); // 치킨
-      soyChikenB = new JButton(new Resizing().Icon("src/miniproject/SoyChicken.png")); // 간장치킨
-      yangChikenB = new JButton(new Resizing().Icon("src/miniproject/YangyumChicken.png")); // 양념치킨
-      cokeB = new JButton(new Resizing().Icon("src/miniproject/Coke.jpg")); // 콜라
-      ciderB = new JButton(new Resizing().Icon("src/miniproject/Cider.jpg")); // 사이다
+      chickenB = new JButton(new Resizing().Icon("src/miniproject/Chicken.jpg")); // 치킨
+      soyChickenB = new JButton(new Resizing().Icon("src/miniproject/SoyChicken.png")); // 간장치킨
+      yangChickenB = new JButton(new Resizing().Icon("src/miniproject/YangyumChicken.png")); // 양념치킨
+      snowChickenB = new JButton(new Resizing().Icon("src/miniproject/SnowingChicken.jpg"));
+      hotbChickenB = new JButton(new Resizing().Icon("src/miniproject/HotblingChicken.jpg")); // 핫블링치킨
+      greenOChickenB = new JButton(new Resizing().Icon("src/miniproject/GreenOnionChicken.jpg")); // 파닭치킨
+      creamChickenB = new JButton(new Resizing().Icon("src/miniproject/CreamianChicken.jpg")); // 크리미언치킨
+      honeyChickenB = new JButton(new Resizing().Icon("src/miniproject/HoneyChicken.png")); // 허니멜로치킨
+      tokbokiChickenB = new JButton(new Resizing().Icon("src/miniproject/TokbokiChicken.png")); // 쌀떡볶이치킨
+      marahChickenB = new JButton(new Resizing().Icon("src/miniproject/MarahotChicken.png"));
+      garlicChickenB = new JButton(new Resizing().Icon("src/miniproject/GarlicChicken.png")); // 갈릭치킨
+      shrimpChickenB = new JButton(new Resizing().Icon("src/miniproject/ShrimpChicken.png"));
+      
       plusB = new JButton("+");
       minusB = new JButton("-");
       
-      chikenB.setBorder(new EmptyBorder(5, 5, 5, 5));
-      soyChikenB.setBorder(new EmptyBorder(5, 5, 5, 5));
-      yangChikenB.setBorder(new EmptyBorder(5, 5, 5, 5));
-      cokeB.setBorder(new EmptyBorder(5, 5, 5, 5));
-      ciderB.setBorder(new EmptyBorder(5, 5, 5, 5));
+      chickenB.setToolTipText("후라이드치킨");
+      yangChickenB.setToolTipText("양념치킨");
+      soyChickenB.setToolTipText("간장치킨");
+      snowChickenB.setToolTipText("스노윙치킨");
+      hotbChickenB.setToolTipText("핫블링치킨");
+      greenOChickenB.setToolTipText("파닭");
+      creamChickenB.setToolTipText("크리미언치킨");
+      honeyChickenB.setToolTipText("허니멜로치킨");
+      tokbokiChickenB.setToolTipText("쌀떡볶이치킨");
+      marahChickenB.setToolTipText("마라핫치킨");
+      garlicChickenB.setToolTipText("갈릭치킨");
+      shrimpChickenB.setToolTipText("새우치킨");
       
-      chikenB.setToolTipText("후라이드치킨");
-      soyChikenB.setToolTipText("간장치킨");
-      yangChikenB.setToolTipText("양념치킨");
-      cokeB.setToolTipText("콜라");
-      ciderB.setToolTipText("사이다");
       
       //Jtable 부분
       //Innerclass 사용하여 셀을 건드리지 못하도록 설정
@@ -137,13 +150,20 @@ public class Dobby_Consumer_Menu extends JPanel{
       mfullPricePanel.setBorder(new TitledBorder("총 가격"));
       
       //음식 고르기 버튼
-      JPanel meal_drink_buttonPanel = new JPanel(new FlowLayout());
-      meal_drink_buttonPanel.add(chikenB);
-      meal_drink_buttonPanel.add(soyChikenB);
-      meal_drink_buttonPanel.add(yangChikenB);
-      meal_drink_buttonPanel.add(cokeB);
-      meal_drink_buttonPanel.add(ciderB);
-      meal_drink_buttonPanel.setBorder(new TitledBorder("음료 & 음식"));
+      JPanel meal_buttonPanel = new JPanel(new GridLayout(3, 4));
+      meal_buttonPanel.add(chickenB);
+      meal_buttonPanel.add(soyChickenB);
+      meal_buttonPanel.add(yangChickenB);
+      meal_buttonPanel.add(snowChickenB);
+      meal_buttonPanel.add(hotbChickenB);
+      meal_buttonPanel.add(greenOChickenB);
+      meal_buttonPanel.add(creamChickenB);
+      meal_buttonPanel.add(honeyChickenB);
+      meal_buttonPanel.add(tokbokiChickenB);
+      meal_buttonPanel.add(marahChickenB);
+      meal_buttonPanel.add(garlicChickenB);
+      meal_buttonPanel.add(shrimpChickenB);
+      meal_buttonPanel.setBorder(new TitledBorder("음료 & 음식"));
       
       //주문 등록, 주문 제거, 주문 결정 버튼 패널
       JPanel buybutton_Panel = new JPanel(new FlowLayout());
@@ -160,7 +180,7 @@ public class Dobby_Consumer_Menu extends JPanel{
       
       //음식을 고르는 버튼 패널과 음식 정보가 담길 패널이 담긴 종합 패널
       JPanel mealPanel = new JPanel(new GridLayout(2, 1));
-      mealPanel.add(meal_drink_buttonPanel);
+      mealPanel.add(meal_buttonPanel);
       mealPanel.add(mlabel_info_Panel);
        
       //총 배치
