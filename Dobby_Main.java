@@ -99,24 +99,47 @@ public class Dobby_Main extends JFrame implements ActionListener {
 			if(count <= 1) {
 				JOptionPane.showMessageDialog(this, "0 마리 이하는 주문 하실 수 없습니다!", "수량 오류", JOptionPane.ERROR_MESSAGE);
 				return;
-			} // 음수로 주문 할 수  설정
+			} // 음수로 주문 할 수 없도록 경고 메세지 출력
 			count--;
 			dMenu.mealAmountTF.setText(Integer.toString(count));
 		}
    } // end mAction()
-   private void regAction() {		
-		String[] row = new String[3];
-		row[0] = dMenu.mealNameTF.getText().trim();
-		row[1] = dMenu.mealAmountTF.getText().trim();
-		row[2] = dMenu.mealPriceTF.getText().trim();
-		dMenu.tableModel.addRow(row); // 음식 정보를 받아서 테이블에 삽입
-  } // end regAction()
   
-  private void delAction() {
-	   
-  } // end delAction()
-  
-  private void decAction() {
-	   
-  } // end decAction()
+   private void regAction() { // 등록버튼 액션
+		if (dMenu.mealAmountTF.getText().equals("")) {
+			JOptionPane.showMessageDialog(dMenu.table, "음식을 선택해 주세요", "주문 오류", JOptionPane.ERROR_MESSAGE);
+			return;
+		} else {
+			String[] row = new String[3];
+			row[0] = dMenu.mealNameTF.getText().trim();
+			row[1] = dMenu.mealAmountTF.getText().trim();
+			row[2] = dMenu.mealPriceTF.getText().trim();
+			dMenu.tableModel.addRow(row); // 음식 정보를 받아서 테이블에 삽입
+		}
+		// 음식 정보 테이블 삽입 후 텍스트 필드 초기화
+		dMenu.mealNameTF.setText("");
+		dMenu.mealAmountTF.setText("");
+		dMenu.mealPriceTF.setText("");
+
+	} // end regAction()
+
+	private void delAction() { // 삭제버튼 액션
+		int row = dMenu.table.getSelectedRow();
+		if (row == -1) {
+			JOptionPane.showMessageDialog(dMenu.table, "주문 제거할 메뉴를 선택해주세요.");
+			return;
+		} // 삭제할 게 없으면 출력
+		dMenu.tableModel.removeRow(row);// 행삭제
+
+	} // end delAction()
+
+	private void decAction() { // 결정버튼 액션
+		int chk = JOptionPane.showConfirmDialog(dMenu.table, "주문 결정하시겠습니까?", "주문 결정", JOptionPane.YES_NO_OPTION);
+
+		if (chk == JOptionPane.NO_OPTION) {
+			return;
+		} else if (chk == JOptionPane.YES_OPTION) {
+			dMenu.tableModel.setRowCount(0); // table 초기화
+		}
+	} // end decAction()
 }
