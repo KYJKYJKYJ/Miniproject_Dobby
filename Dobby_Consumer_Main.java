@@ -3,6 +3,7 @@ package miniproject;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -10,6 +11,9 @@ import javax.swing.JTextField;
 
 public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 	Dobby_Consumer_Menu dMenu;
+
+	Dobby_jdbc jdbc = new Dobby_jdbc();
+	Dobby_Menu_DTO mdto;
 	
 	public Dobby_Consumer_Main() {
 		dMenu = new Dobby_Consumer_Menu();
@@ -43,7 +47,7 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 	    dMenu.decideB.addActionListener(this);
 	} // end Dobby_Main()
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) {	
 		new Dobby_Consumer_Main();
 
 	} // end main()
@@ -52,29 +56,29 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 	   public void actionPerformed(ActionEvent e) {
 	      Object obj = e.getSource();
 	      if(obj == dMenu.chickenB) {
-	    	  meal_Actions("후라이드치킨", 10000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	    	  meal_Actions(jdbc.mName(1), jdbc.mPrice(1), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } else if(obj == dMenu.soyChickenB) {
-	    	  meal_Actions("간장치킨", 12000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	    	  meal_Actions(jdbc.mName(2), jdbc.mPrice(2), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } else if(obj == dMenu.yangChickenB) {
-	    	  meal_Actions("양념치킨", 11000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	    	  meal_Actions(jdbc.mName(3), jdbc.mPrice(3), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } else if(obj == dMenu.snowChickenB) {
-	    	  meal_Actions("스노윙치킨", 13000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	    	  meal_Actions(jdbc.mName(4), jdbc.mPrice(4), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } else if(obj == dMenu.hotbChickenB) {
-	    	  meal_Actions("핫블링치킨", 13500, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	    	  meal_Actions(jdbc.mName(5), jdbc.mPrice(5), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } else if(obj == dMenu.greenOChickenB) {
-		      meal_Actions("파닭", 12000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+		      meal_Actions(jdbc.mName(6), jdbc.mPrice(6), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } else if(obj == dMenu.creamChickenB) {
-		      meal_Actions("크리미언치킨", 14000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+		      meal_Actions(jdbc.mName(7), jdbc.mPrice(7), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } else if(obj == dMenu.honeyChickenB) {
-		      meal_Actions("허니멜로치킨", 14000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+		      meal_Actions(jdbc.mName(8), jdbc.mPrice(8), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } else if(obj == dMenu.tokbokiChickenB) {
-		      meal_Actions("쌀떡볶이치킨", 14000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+		      meal_Actions(jdbc.mName(9), jdbc.mPrice(9), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } else if(obj == dMenu.marahChickenB) {
-		      meal_Actions("마라핫치킨", 14500, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+		      meal_Actions(jdbc.mName(10), jdbc.mPrice(10), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } else if(obj == dMenu.garlicChickenB) {
-		      meal_Actions("갈릭치킨", 15000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+		      meal_Actions(jdbc.mName(11), jdbc.mPrice(11), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } else if(obj == dMenu.shrimpChickenB) {
-		      meal_Actions("새우치킨", 16000, dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+		      meal_Actions(jdbc.mName(12), jdbc.mPrice(12), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } // 메뉴 선택 액션
 	      
 	      else if(obj == dMenu.plusB) {
