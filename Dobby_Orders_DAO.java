@@ -3,19 +3,19 @@ package miniproject;
 import java.sql.*;
 import java.util.*;
 
-public class Dobby_Menu_DAO {
+public class Dobby_Orders_DAO {
 	private Connection conn;
 	private Statement stmt;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
-	private static Dobby_Menu_DAO mdao = new Dobby_Menu_DAO();
+	private static Dobby_Orders_DAO odao = new Dobby_Orders_DAO();
 	//싱글톤 패턴 사용
 	
-	private Dobby_Menu_DAO() { }
+	private Dobby_Orders_DAO() { }
 	
-	public static Dobby_Menu_DAO getInstance() {
-		return mdao;
+	public static Dobby_Orders_DAO getInstance() {
+		return odao;
 	}
 	
 	private Connection init() throws ClassNotFoundException, SQLException {
@@ -41,14 +41,15 @@ public class Dobby_Menu_DAO {
 
 		if (conn != null)
 			conn.close();
+
 	}// end exit()
 	
-	public String namelist(int id) {
+	public String morderlist(int id) {
 		String mName = "";
 		try {
 			conn = init();
 			stmt = conn.createStatement();
-			String sql = "SELECT menu_name, menu_price FROM menu WHERE menu_id = " + id + " "; 	
+			String sql = "INSERT INTO ";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {
@@ -67,31 +68,5 @@ public class Dobby_Menu_DAO {
 			}
 		}
 		return mName;
-	}
-	
-	public int pricelist(int id) {
-		int mPrice = 0;
-		try {
-			conn = init();
-			stmt = conn.createStatement();
-			String sql = "SELECT menu_name, menu_price FROM menu WHERE menu_id = " + id + " "; 	
-			rs = stmt.executeQuery(sql);
-			
-			while(rs.next()) {
-				Dobby_Menu_DTO mdto = new Dobby_Menu_DTO();
-				mdto.setMenu_name(rs.getString("menu_name"));
-				mdto.setMenu_price(rs.getInt("menu_price"));
-				mPrice = mdto.getMenu_price();
-			}		
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				exit();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return mPrice;
 	}
 }

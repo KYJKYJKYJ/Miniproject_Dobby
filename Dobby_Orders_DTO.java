@@ -2,9 +2,9 @@ package miniproject;
 
 public class Dobby_Orders_DTO {
 	private String order_id; //주문 번호
-	private int menu_id;  //메뉴 번호
-	private int order_quantity;//주문 수량
-	private int order_sumprice;//메뉴 총 가격
+	private int menu_id; //메뉴 번호
+	private int order_quantity; //주문 수량
+	private int order_sumprice; //메뉴 총 가격
 	
 	public Dobby_Orders_DTO() {
 		

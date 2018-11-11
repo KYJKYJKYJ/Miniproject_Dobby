@@ -131,19 +131,21 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
     } // end mAction()
   
    private void regAction() { // 등록버튼 액션
-	   if (dMenu.mealNameTF.getText().equals("")) {
-			JOptionPane.showMessageDialog(this, "음식을 선택해 주세요!", "주문 오류!", JOptionPane.ERROR_MESSAGE);
+	   if (dMenu.mealNameTF.getText().equals("") || dMenu.order_idTF.getText().equals("")) {
+			JOptionPane.showMessageDialog(this, "이름 또는 음식을 입력하거나 선택해 주세요!", "주문 오류!", JOptionPane.ERROR_MESSAGE);
 			return;
 		} else {
-			String[] row = new String[3];
-			row[0] = dMenu.mealNameTF.getText().trim();
-			row[1] = dMenu.mealAmountTF.getText().trim();
-			row[2] = dMenu.mealPriceTF.getText().trim();
+			int allPrice = (Integer.parseInt(dMenu.mealPriceTF.getText()) * Integer.parseInt(dMenu.mealAmountTF.getText()));
+			String[] row = new String[4];
+			row[0] = dMenu.order_idTF.getText().trim();
+			row[1] = dMenu.mealNameTF.getText().trim();
+			row[2] = dMenu.mealAmountTF.getText().trim();
+			row[3] = Integer.toString(allPrice);
 			dMenu.tableModel.addRow(row); // 음식 정보를 받아서 테이블에 삽입
 			
 			int fPrice = 0;
 			for(int i = 0; i < dMenu.table.getRowCount(); i++) {
-				fPrice += (Integer.parseInt((String) dMenu.tableModel.getValueAt(i, 2)) * Integer.parseInt((String) dMenu.tableModel.getValueAt(i, 1)));
+				fPrice += Integer.parseInt((String) dMenu.tableModel.getValueAt(i, 3));
 				// 테이블로 부터 금액 컬럼 값을 읽어나간 후 변수에 덧셈하여 저장
 				dMenu.fullPriceTF.setText(Integer.toString(fPrice));
 			}
@@ -169,7 +171,7 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 			dMenu.fullPriceTF.setText(Integer.toString(0)); // 행이 없을 경우 주문하려는 메뉴가 없는 것 이므로 총 가격 0으로 설정
 		else {
 			for(int i = 0; i < dMenu.table.getRowCount(); i++) {
-				fPrice += (Integer.parseInt((String) dMenu.tableModel.getValueAt(i, 2)) * Integer.parseInt((String) dMenu.tableModel.getValueAt(i, 1)));
+				fPrice += Integer.parseInt((String) dMenu.tableModel.getValueAt(i, 3));
 				// 테이블로 부터 금액 컬럼 값을 읽어나간 후 변수에 덧셈하여 저장
 				dMenu.fullPriceTF.setText(Integer.toString(fPrice));
 			}
@@ -181,17 +183,14 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 			// 메뉴를 등록하지 않았으면 총 가격이 0이므로 메뉴를 등록한 후에 결정버튼을 누를 수 있도록 메세지 출력
 			JOptionPane.showMessageDialog(this, "음식을 먼저 등록해주세요!", "주문 오류!", JOptionPane.ERROR_MESSAGE);
 			return;
-		} /*else if(Integer.parseInt(dMenu.fullPriceTF.getText()) < 10000) {
-			//10000원 이상부터 주문 결정 가능
-			JOptionPane.showMessageDialog(this, "10000원 이상 부터 주문 가능 합니다!", "주문 오류!", JOptionPane.ERROR_MESSAGE);
-			return;
-		}*/
+		} 
 				
 		int chk = JOptionPane.showConfirmDialog(this, "주문 결정하시겠습니까?", "주문 결정", JOptionPane.YES_NO_OPTION);
 
 		if (chk == JOptionPane.NO_OPTION) {
 			return;
 		} else if (chk == JOptionPane.YES_OPTION) {
+		    dMenu.order_idTF.setText("");
 			dMenu.tableModel.setRowCount(0); // table 초기화
 			dMenu.fullPriceTF.setText(Integer.toString(0)); // 총 금액 초기화
 		}

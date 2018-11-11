@@ -17,10 +17,4 @@ public class Dobby_jdbc {
 		
 		return menuPrice;
 	}
-	
-	public static void main(String[] args) {
-	
-
-	}
-
 }
