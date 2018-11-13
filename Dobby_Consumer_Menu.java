@@ -94,15 +94,15 @@ public class Dobby_Consumer_Menu extends JPanel{
       chickenB = new JButton(new Resizing().Icon("src/miniproject/Chicken.jpg")); // 치킨
       soyChickenB = new JButton(new Resizing().Icon("src/miniproject/SoyChicken.png")); // 간장치킨
       yangChickenB = new JButton(new Resizing().Icon("src/miniproject/YangyumChicken.png")); // 양념치킨
-      snowChickenB = new JButton(new Resizing().Icon("src/miniproject/SnowingChicken.jpg"));
+      snowChickenB = new JButton(new Resizing().Icon("src/miniproject/SnowingChicken.jpg")); // 스노윙치킨
       hotbChickenB = new JButton(new Resizing().Icon("src/miniproject/HotblingChicken.jpg")); // 핫블링치킨
       greenOChickenB = new JButton(new Resizing().Icon("src/miniproject/GreenOnionChicken.jpg")); // 파닭치킨
       creamChickenB = new JButton(new Resizing().Icon("src/miniproject/CreamianChicken.jpg")); // 크리미언치킨
       honeyChickenB = new JButton(new Resizing().Icon("src/miniproject/HoneyChicken.png")); // 허니멜로치킨
       tokbokiChickenB = new JButton(new Resizing().Icon("src/miniproject/TokbokiChicken.png")); // 쌀떡볶이치킨
-      marahChickenB = new JButton(new Resizing().Icon("src/miniproject/MarahotChicken.png"));
+      marahChickenB = new JButton(new Resizing().Icon("src/miniproject/MarahotChicken.png")); // 마라핫치킨
       garlicChickenB = new JButton(new Resizing().Icon("src/miniproject/GarlicChicken.png")); // 갈릭치킨
-      shrimpChickenB = new JButton(new Resizing().Icon("src/miniproject/ShrimpChicken.png"));
+      shrimpChickenB = new JButton(new Resizing().Icon("src/miniproject/ShrimpChicken.png")); // 새우치킨
       
       plusB = new JButton("+");
       minusB = new JButton("-");

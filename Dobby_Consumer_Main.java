@@ -3,7 +3,8 @@ package miniproject;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -11,9 +12,9 @@ import javax.swing.JTextField;
 
 public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 	Dobby_Consumer_Menu dMenu;
-
+	Dobby_Manager_Main mMain = new Dobby_Manager_Main();
+	
 	Dobby_jdbc jdbc = new Dobby_jdbc();
-	Dobby_Menu_DTO mdto;
 	
 	public Dobby_Consumer_Main() {
 		dMenu = new Dobby_Consumer_Menu();
@@ -33,6 +34,7 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 	    dMenu.yangChickenB.addActionListener(this);
 	    dMenu.creamChickenB.addActionListener(this);
 	    dMenu.tokbokiChickenB.addActionListener(this);
+	    dMenu.hotbChickenB.addActionListener(this);
 	    dMenu.marahChickenB.addActionListener(this);
 	    dMenu.shrimpChickenB.addActionListener(this);
 	    dMenu.garlicChickenB.addActionListener(this);
@@ -47,7 +49,7 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 	    dMenu.decideB.addActionListener(this);
 	} // end Dobby_Main()
 	
-	public static void main(String[] args) {	
+	public static void main(String[] args) {
 		new Dobby_Consumer_Main();
 
 	} // end main()
@@ -57,9 +59,9 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 	      Object obj = e.getSource();
 	      if(obj == dMenu.chickenB) {
 	    	  meal_Actions(jdbc.mName(1), jdbc.mPrice(1), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
-	      } else if(obj == dMenu.soyChickenB) {
-	    	  meal_Actions(jdbc.mName(2), jdbc.mPrice(2), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } else if(obj == dMenu.yangChickenB) {
+	    	  meal_Actions(jdbc.mName(2), jdbc.mPrice(2), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
+	      } else if(obj == dMenu.soyChickenB) {
 	    	  meal_Actions(jdbc.mName(3), jdbc.mPrice(3), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
 	      } else if(obj == dMenu.snowChickenB) {
 	    	  meal_Actions(jdbc.mName(4), jdbc.mPrice(4), dMenu.mealNameTF, dMenu.mealPriceTF, dMenu.mealAmountTF);
@@ -135,6 +137,7 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(this, "이름 또는 음식을 입력하거나 선택해 주세요!", "주문 오류!", JOptionPane.ERROR_MESSAGE);
 			return;
 		} else {
+			dMenu.order_idTF.setEditable(false); // 초기 이름 값을 받으면 입력불가
 			int allPrice = (Integer.parseInt(dMenu.mealPriceTF.getText()) * Integer.parseInt(dMenu.mealAmountTF.getText()));
 			String[] row = new String[4];
 			row[0] = dMenu.order_idTF.getText().trim();
@@ -178,6 +181,14 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 		}		
 	} // end delAction()
 
+	public void orderTA() {
+	      Calendar cal = Calendar.getInstance();// 현재 시간 구하기.
+	      SimpleDateFormat sdfm = new SimpleDateFormat("hh시 mm분");
+	      String time = sdfm.format(cal.getTime());
+	      mMain.mMenu.orderHistoryTA.append(time + " 주문이 들어왔습니다. " + (String) dMenu.table.getValueAt(0, 0));
+	   }//end orderTA()
+
+	
 	private void decAction() { // 결정버튼 액션
 		if (dMenu.fullPriceTF.getText().equals(Integer.toString(0))) {
 			// 메뉴를 등록하지 않았으면 총 가격이 0이므로 메뉴를 등록한 후에 결정버튼을 누를 수 있도록 메세지 출력
@@ -190,9 +201,17 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 		if (chk == JOptionPane.NO_OPTION) {
 			return;
 		} else if (chk == JOptionPane.YES_OPTION) {
+			for(int i = 0; i < dMenu.table.getRowCount(); i++) {
+				jdbc.oInsert((String)dMenu.table.getValueAt(i, 0), (String) dMenu.table.getValueAt(i, 1),
+						Integer.parseInt((String)dMenu.table.getValueAt(i, 2)), Integer.parseInt((String)dMenu.table.getValueAt(i, 3)));
+			}
+			
+					
+			orderTA();
 		    dMenu.order_idTF.setText("");
 			dMenu.tableModel.setRowCount(0); // table 초기화
 			dMenu.fullPriceTF.setText(Integer.toString(0)); // 총 금액 초기화
+			dMenu.order_idTF.setEditable(true);
 		}
 	} // end decAction()
 }

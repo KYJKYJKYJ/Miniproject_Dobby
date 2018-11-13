@@ -17,4 +17,11 @@ public class Dobby_jdbc {
 		
 		return menuPrice;
 	}
+	
+	public void oInsert(String order_id, String order_name, int order_quantity, int order_sumprice) {
+		Dobby_Orders_DAO odao = Dobby_Orders_DAO.getInstance();
+		Dobby_Orders_DTO odto = new Dobby_Orders_DTO(order_id, order_name, order_quantity, order_sumprice);
+		odao.insert_orderlist(odto);
+	}
+	
 }

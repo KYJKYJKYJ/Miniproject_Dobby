@@ -1,7 +1,12 @@
 package miniproject;
 
 import java.sql.*;
-import java.util.*;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import java1105_jdbc.EmpDTO;
 
 public class Dobby_Orders_DAO {
 	private Connection conn;
@@ -44,19 +49,44 @@ public class Dobby_Orders_DAO {
 
 	}// end exit()
 	
-	public String morderlist(int id) {
-		String mName = "";
+	public void insert_orderlist(Dobby_Orders_DTO odto) {
+		try {
+			conn = init();
+			String sql = "INSERT INTO orders " + 
+						 "VALUES (?, ?, ?, ?) ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, odto.getOrder_id());
+			pstmt.setString(2, odto.getOrder_name());
+	        pstmt.setInt(3, odto.getOrder_quantity());
+	        pstmt.setInt(4, odto.getOrder_sumprice());
+			pstmt.executeUpdate();	
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				exit();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public List<Dobby_Orders_DTO> orderlist() {
+		List<Dobby_Orders_DTO> aList = new ArrayList<Dobby_Orders_DTO>();		
 		try {
 			conn = init();
 			stmt = conn.createStatement();
-			String sql = "INSERT INTO ";
+			String sql = "SELECT * FROM orders"; 	
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {
-				Dobby_Menu_DTO mdto = new Dobby_Menu_DTO();
-				mdto.setMenu_name(rs.getString("menu_name"));
-				mdto.setMenu_price(rs.getInt("menu_price"));
-				mName = mdto.getMenu_name();
+				Dobby_Orders_DTO odto = new Dobby_Orders_DTO();
+				odto.setOrder_id(rs.getString("order_id"));
+				odto.setOrder_name(rs.getString("order_name"));
+				odto.setOrder_quantity(rs.getInt("order_quantity"));
+				odto.setOrder_sumprice(rs.getInt("order_sumprice"));
+				
+				aList.add(odto);
 			}		
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -67,6 +97,6 @@ public class Dobby_Orders_DAO {
 				e.printStackTrace();
 			}
 		}
-		return mName;
+		return aList;
 	}
 }

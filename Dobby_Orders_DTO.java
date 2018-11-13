@@ -2,12 +2,20 @@ package miniproject;
 
 public class Dobby_Orders_DTO {
 	private String order_id; //주문 번호
-	private int menu_id; //메뉴 번호
+	private String order_name; //메뉴 이름
 	private int order_quantity; //주문 수량
 	private int order_sumprice; //메뉴 총 가격
 	
 	public Dobby_Orders_DTO() {
 		
+	}
+
+	public Dobby_Orders_DTO(String order_id, String order_name, int order_quantity, int order_sumprice) {
+		
+		this.order_id = order_id;
+		this.order_name = order_name;
+		this.order_quantity = order_quantity;
+		this.order_sumprice = order_sumprice;
 	}
 
 	public String getOrder_id() {
@@ -18,12 +26,12 @@ public class Dobby_Orders_DTO {
 		this.order_id = order_id;
 	}
 
-	public int getMenu_id() {
-		return menu_id;
+	public String getOrder_name() {
+		return order_name;
 	}
 
-	public void setMenu_id(int menu_id) {
-		this.menu_id = menu_id;
+	public void setOrder_name(String order_name) {
+		this.order_name = order_name;
 	}
 
 	public int getOrder_quantity() {
@@ -41,6 +49,5 @@ public class Dobby_Orders_DTO {
 	public void setOrder_sumprice(int order_sumprice) {
 		this.order_sumprice = order_sumprice;
 	}
-	
-	
+		
 }//end OrdersDTO

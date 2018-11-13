@@ -2,6 +2,7 @@ package miniproject;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,7 +14,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class Dobby_Manager_Menu extends JPanel {
+import java1105_jdbc.EmpDTO;
+
+public class Dobby_Manager_Menu extends JPanel implements Runnable {
 	// 주문내역, 재고 수량, 판매 집계, 총매출금액 라벨
 	JLabel orderHistoryL, stockL, salesCountL, totalSalesCountL;
 	// 주문내역 , 재고 수량, 판매 집계 테이블
@@ -29,7 +32,10 @@ public class Dobby_Manager_Menu extends JPanel {
 	// 초기화 버튼
 	JButton resetB;
 
-	String[] cols = { "주문시간", "음식명", "수량", "금액" };
+	Dobby_Consumer_Menu dMenu;
+	Dobby_jdbc jdbc;
+	
+	String[] cols = { "주문자이름", "음식명", "수량", "금액" };
 	String[] cols2 = { "제품 id", "제품명", "수량" };
 	String[] cols3 = { "음식명", "수량", "금액" };
 
@@ -50,21 +56,20 @@ public class Dobby_Manager_Menu extends JPanel {
 		totalSalesCountTF = new JTextField(20);
 
 		// JTextArea 부분
-		orderHistoryTA = new JTextArea("주문 확인");
+		orderHistoryTA = new JTextArea();
 
 		// Jbutton 부분
 		resetB = new JButton("초기화");
 
 		// JTable 부분 (주문 내역)
 		// Innerclass 사용하여 셀을 건드리지 못하도록 설정
-		ohTableModel = new DefaultTableModel(cols, 30) {
+		ohTableModel = new DefaultTableModel(cols, 0) {
 			public boolean isCellEditable(int row, int col) {
 				return false;
 			}
 		};
 		orderHistoryT = new JTable(ohTableModel);
 		scroll = new JScrollPane(orderHistoryT);
-		orderHistoryT.setRowHeight(20);// 라인의 높이
 		orderHistoryT.getColumnModel().getColumn(0).setPreferredWidth(20); // 주문 시간
 		orderHistoryT.getColumnModel().getColumn(1).setPreferredWidth(40); // 음식명
 		orderHistoryT.getColumnModel().getColumn(2).setPreferredWidth(10); // 음식 수량
@@ -74,9 +79,9 @@ public class Dobby_Manager_Menu extends JPanel {
 		// 특정 셀이 선택되었을 때, 동일한 행에 있는 나머지 셀들이 전부 선택되는 기본 동작 불가 설정
 		orderHistoryT.setColumnSelectionAllowed(false);
 		// 특정 셀이 선택되었을 때, 동일한 열에 있는 나머지 셀들이 전부 선택되는 기본 동작 불가 설정
-
+		
 		// JTable 부분 (재고 수량)
-		stTableModel = new DefaultTableModel(cols2, 30) {
+		stTableModel = new DefaultTableModel(cols2, 0) {
 			public boolean isCellEditable(int row, int col) {
 				return false;
 			}
@@ -84,7 +89,6 @@ public class Dobby_Manager_Menu extends JPanel {
 
 		stockT = new JTable(stTableModel);
 		scroll2 = new JScrollPane(stockT);
-		stockT.setRowHeight(20);// 라인의 높이
 		stockT.getColumnModel().getColumn(0).setPreferredWidth(50); // 제품 id
 		stockT.getColumnModel().getColumn(1).setPreferredWidth(50); // 제품명
 		stockT.getColumnModel().getColumn(2).setPreferredWidth(10); // 수량
@@ -95,7 +99,7 @@ public class Dobby_Manager_Menu extends JPanel {
 		// 특정 셀이 선택되었을 때, 동일한 열에 있는 나머지 셀들이 전부 선택되는 기본 동작 불가 설정
 
 		// JTable 부분 (판매 집계)
-		scTableModel = new DefaultTableModel(cols3, 30) {
+		scTableModel = new DefaultTableModel(cols3, 0) {
 			public boolean isCellEditable(int row, int col) {
 				return false;
 			}
@@ -103,7 +107,6 @@ public class Dobby_Manager_Menu extends JPanel {
 
 		salesCountT = new JTable(scTableModel);
 		scroll3 = new JScrollPane(salesCountT);
-		salesCountT.setRowHeight(20);// 라인의 높이
 		salesCountT.getColumnModel().getColumn(0).setPreferredWidth(50); // 음식명
 		salesCountT.getColumnModel().getColumn(1).setPreferredWidth(50); // 수량
 		salesCountT.getColumnModel().getColumn(2).setPreferredWidth(10); // 금액
@@ -156,9 +159,20 @@ public class Dobby_Manager_Menu extends JPanel {
 		this.add(ohPanel);
 		this.add(stPanel);
 		this.add(scTotalPanel);
-
-		
-
 	}// end Dobby_Manager_Menu()//////
 
+	@Override
+	public void run() {	
+		Dobby_Orders_DAO odao = Dobby_Orders_DAO.getInstance();
+		List<Dobby_Orders_DTO> aList = odao.orderlist();
+			for(Dobby_Orders_DTO odto : aList) {
+				Object[] oArr = new Object[4];
+				oArr[0] = odto.getOrder_id();
+				oArr[1] = odto.getOrder_name();
+				oArr[2] = odto.getOrder_quantity();
+				oArr[3] = odto.getOrder_sumprice();		
+			
+				ohTableModel.addRow(oArr);
+		}
+	}
 }// end class

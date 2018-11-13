@@ -54,9 +54,8 @@ public class Dobby_Menu_DAO {
 			while(rs.next()) {
 				Dobby_Menu_DTO mdto = new Dobby_Menu_DTO();
 				mdto.setMenu_name(rs.getString("menu_name"));
-				mdto.setMenu_price(rs.getInt("menu_price"));
 				mName = mdto.getMenu_name();
-			}		
+			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -79,7 +78,6 @@ public class Dobby_Menu_DAO {
 			
 			while(rs.next()) {
 				Dobby_Menu_DTO mdto = new Dobby_Menu_DTO();
-				mdto.setMenu_name(rs.getString("menu_name"));
 				mdto.setMenu_price(rs.getInt("menu_price"));
 				mPrice = mdto.getMenu_price();
 			}		
