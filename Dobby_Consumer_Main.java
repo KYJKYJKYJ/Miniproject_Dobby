@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 	Dobby_Consumer_Menu dMenu;
 	Dobby_Manager_Main mMain = new Dobby_Manager_Main();
+	Dobby_Manager_Menu mMenu;
 	
 	Dobby_jdbc jdbc = new Dobby_jdbc();
 	
@@ -100,7 +101,7 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 	   }//end actionPerformed()
 	
 	private void meal_Actions(String name, int price, 
-			JTextField nameTF, JTextField priceTF, JTextField amountTF) {
+		JTextField nameTF, JTextField priceTF, JTextField amountTF) {
 		int amount = 1; // 메뉴를 누를 경우 기본 수량을 1로 하여 메뉴 선택
 		nameTF.setText(name);
 		priceTF.setText(Integer.toString(price));
@@ -189,7 +190,7 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 	    mMain.mMenu.orderHistoryTA.append(time + " 주문이 들어왔습니다. " + "[주문자 : " + (String) dMenu.table.getValueAt(0, 0) + "]" + "\n");
 	}//end orderTA()
 
-	   // ORDERS테이블 => 판매자 주문 내역 테이블 삽입
+	// ORDERS테이블 => 판매자 주문 내역 테이블 삽입
 	public void orderHistoryInsert() {
 	    mMain.mMenu.ohTableModel.setRowCount(0);
 	    Dobby_Orders_DAO dao = Dobby_Orders_DAO.getInstance();
@@ -206,6 +207,8 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 	 }// end orderHistoryInsert()///////
 	
 	private void decAction() { // 결정버튼 액션
+		Dobby_Join_DAO jdao = Dobby_Join_DAO.getInstance();
+		Dobby_Menu_DAO mdao = new Dobby_Menu_DAO();
 		if (dMenu.fullPriceTF.getText().equals(Integer.toString(0))) {
 			// 메뉴를 등록하지 않았으면 총 가격이 0이므로 메뉴를 등록한 후에 결정버튼을 누를 수 있도록 메세지 출력
 			JOptionPane.showMessageDialog(this, "음식을 먼저 등록해주세요!", "주문 오류!", JOptionPane.ERROR_MESSAGE);
@@ -220,8 +223,14 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 			for(int i = 0; i < dMenu.table.getRowCount(); i++) {
 				jdbc.oInsert((String)dMenu.table.getValueAt(i, 0), (String) dMenu.table.getValueAt(i, 1),
 						Integer.parseInt((String)dMenu.table.getValueAt(i, 2)), Integer.parseInt((String)dMenu.table.getValueAt(i, 3)));
+
+				int id = mdao.idlist((String) dMenu.table.getValueAt(i, 1));
+				String material = "Chicken";
+				jdao.minusStocklist(id, Integer.parseInt((String)dMenu.table.getValueAt(i, 2)), material);
 			}
-								
+			
+			mMain.mMenu.stTableModel.setRowCount(0);
+			mMain.stockList();					
 			orderTA();
 			orderHistoryInsert();
 			

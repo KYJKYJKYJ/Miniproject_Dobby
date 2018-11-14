@@ -10,6 +10,13 @@ public class Dobby_Menu_DTO {
 		
 	}
 
+	public Dobby_Menu_DTO(int menu_id, int recipe_id, String menu_name, int menu_price) {
+		this.menu_id = menu_id;
+		this.recipe_id = recipe_id;
+		this.menu_name = menu_name;
+		this.menu_price = menu_price;
+	}
+
 	public int getMenu_id() {
 		return menu_id;
 	}

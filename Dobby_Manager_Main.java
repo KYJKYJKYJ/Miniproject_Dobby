@@ -81,7 +81,7 @@ public class Dobby_Manager_Main extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(this, "입고 취소 행을 선택해주세요!", "입고 오류!", JOptionPane.ERROR_MESSAGE);
 			return;
 		} // 삭제할 게 없으면 출력
-		mMenu.putTableModel.removeRow(row);// 행삭제
+		mMenu.putTableModel.removeRow(row);// 행 삭제
 
 	} // end delAction()
 
@@ -104,7 +104,7 @@ public class Dobby_Manager_Main extends JFrame implements ActionListener {
 				updateList((String) mMenu.putT.getValueAt(i, 1), Integer.parseInt((String) mMenu.putT.getValueAt(i, 2)));
 			}
 			
-			JOptionPane.showMessageDialog(this, "입고 완료.");
+			JOptionPane.showMessageDialog(this, "입고 완료");
 			mMenu.stTableModel.setRowCount(0); // 재고 table 초기화
 			stockList(); // 재고 table 다시 불러옴
 			mMenu.putTableModel.setRowCount(0); // 입고 table 초기화
@@ -118,7 +118,7 @@ public class Dobby_Manager_Main extends JFrame implements ActionListener {
 		pdao.insert_putlist(pdto);
 	}
 
-	private void stockList() {
+	public void stockList() {
 		Dobby_Stock_DAO sdao = Dobby_Stock_DAO.getInstance();
 		List<Dobby_Stock_DTO> sList = sdao.readStocklist();
 

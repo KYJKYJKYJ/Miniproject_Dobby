@@ -12,7 +12,7 @@ public class Dobby_Menu_DAO {
 	private static Dobby_Menu_DAO mdao = new Dobby_Menu_DAO();
 	//싱글톤 패턴 사용
 	
-	private Dobby_Menu_DAO() { }
+	public Dobby_Menu_DAO() { }
 	
 	public static Dobby_Menu_DAO getInstance() {
 		return mdao;
@@ -91,5 +91,30 @@ public class Dobby_Menu_DAO {
 			}
 		}
 		return mPrice;
+	}
+	
+	public int idlist(String name) {
+		int mId = 0;
+		try {
+			conn = init();
+			stmt = conn.createStatement();
+			String sql = "SELECT recipe_id FROM menu WHERE menu_name = '" + name + "' "; 	
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				Dobby_Menu_DTO mdto = new Dobby_Menu_DTO();
+				mdto.setRecipe_id(rs.getInt("recipe_id"));
+				mId = mdto.getRecipe_id();
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				exit();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return mId;
 	}
 }

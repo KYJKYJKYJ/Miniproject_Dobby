@@ -43,42 +43,4 @@ public class Dobby_Recipe_DAO {
 			conn.close();
 
 	}// end exit()
-	
-	public List<Dobby_Recipe_DTO> searchMethod() {
-		List<Dobby_Recipe_DTO> aList = new ArrayList<Dobby_Recipe_DTO>();
-		try {
-			conn = init();
-			stmt = conn.createStatement();
-			String sql = "SELECT * FROM recipe"; 	
-			rs = stmt.executeQuery(sql);
-			
-			while(rs.next()) {
-				Dobby_Recipe_DTO rdto = new Dobby_Recipe_DTO();
-				rdto.setRecipe_id(rs.getInt("recipe_id"));
-				rdto.setRecipe_chicken(rs.getInt("recipe_chicken"));
-				rdto.setRecipe_cheese(rs.getInt("recipe_cheese"));
-				rdto.setRecipe_sweet(rs.getInt("recipe_sweet"));
-				rdto.setRecipe_soy(rs.getInt("recipe_soy"));
-				rdto.setRecipe_spicy(rs.getInt("recipe_spicy"));
-				rdto.setRecipe_spingonion(rs.getInt("recipe_springonion"));
-				rdto.setRecipe_onion(rs.getInt("recipe_onion"));
-				rdto.setRecipe_honey(rs.getInt("recipe_honey"));
-				rdto.setRecipe_dduck(rs.getInt("recipe_dduck"));
-				rdto.setRecipe_sacheon(rs.getInt("recipe_sacheon"));
-				rdto.setRecipe_garlic(rs.getInt("recipe_garlic"));
-				rdto.setRecipe_shrimp(rs.getInt("recipe_shrimp"));
-				aList.add(rdto);
-			}
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				exit();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return aList;
-	}
 }
