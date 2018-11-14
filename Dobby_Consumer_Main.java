@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -182,12 +183,27 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 	} // end delAction()
 
 	public void orderTA() {
-	      Calendar cal = Calendar.getInstance();// 현재 시간 구하기.
-	      SimpleDateFormat sdfm = new SimpleDateFormat("hh시 mm분");
-	      String time = sdfm.format(cal.getTime());
-	      mMain.mMenu.orderHistoryTA.append(time + " 주문이 들어왔습니다. " + (String) dMenu.table.getValueAt(0, 0));
-	   }//end orderTA()
+	    Calendar cal = Calendar.getInstance();// 현재 시간 구하기.
+	    SimpleDateFormat sdfm = new SimpleDateFormat("hh시 mm분");
+	    String time = sdfm.format(cal.getTime());
+	    mMain.mMenu.orderHistoryTA.append(time + " 주문이 들어왔습니다. " + "[주문자 : " + (String) dMenu.table.getValueAt(0, 0) + "]" + "\n");
+	}//end orderTA()
 
+	   // ORDERS테이블 => 판매자 주문 내역 테이블 삽입
+	public void orderHistoryInsert() {
+	    mMain.mMenu.ohTableModel.setRowCount(0);
+	    Dobby_Orders_DAO dao = Dobby_Orders_DAO.getInstance();
+	    List<Dobby_Orders_DTO> aList = dao.Read_orderlist();
+	    
+	    for (Dobby_Orders_DTO odto : aList) {
+	       Object[] line = new Object[4];
+	       line[0] = odto.getOrder_id();
+	       line[1] = odto.getOrder_name();
+	       line[2] = odto.getOrder_quantity();
+	       line[3] = odto.getOrder_sumprice();
+	       mMain.mMenu.ohTableModel.addRow(line);
+	    }
+	 }// end orderHistoryInsert()///////
 	
 	private void decAction() { // 결정버튼 액션
 		if (dMenu.fullPriceTF.getText().equals(Integer.toString(0))) {
@@ -205,9 +221,11 @@ public class Dobby_Consumer_Main extends JFrame implements ActionListener {
 				jdbc.oInsert((String)dMenu.table.getValueAt(i, 0), (String) dMenu.table.getValueAt(i, 1),
 						Integer.parseInt((String)dMenu.table.getValueAt(i, 2)), Integer.parseInt((String)dMenu.table.getValueAt(i, 3)));
 			}
-			
-					
+								
 			orderTA();
+			orderHistoryInsert();
+			
+			JOptionPane.showMessageDialog(this, "주문이 완료 되었습니다.");
 		    dMenu.order_idTF.setText("");
 			dMenu.tableModel.setRowCount(0); // table 초기화
 			dMenu.fullPriceTF.setText(Integer.toString(0)); // 총 금액 초기화

@@ -3,8 +3,6 @@ package miniproject;
 import java.sql.*;
 import java.util.*;
 
-import java1102_jdbc.EmpDTO;
-
 public class Dobby_Recipe_DAO {
 	private Connection conn;
 	private Statement stmt;

@@ -1,12 +1,8 @@
 package miniproject;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-
-import java1105_jdbc.EmpDTO;
 
 public class Dobby_Orders_DAO {
 	private Connection conn;
@@ -53,7 +49,7 @@ public class Dobby_Orders_DAO {
 		try {
 			conn = init();
 			String sql = "INSERT INTO orders " + 
-						 "VALUES (?, ?, ?, ?) ";
+						 "VALUES (order_sq.nextval, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, odto.getOrder_id());
 			pstmt.setString(2, odto.getOrder_name());
@@ -71,12 +67,12 @@ public class Dobby_Orders_DAO {
 		}
 	}
 	
-	public List<Dobby_Orders_DTO> orderlist() {
+	public List<Dobby_Orders_DTO> Read_orderlist() {
 		List<Dobby_Orders_DTO> aList = new ArrayList<Dobby_Orders_DTO>();		
 		try {
 			conn = init();
 			stmt = conn.createStatement();
-			String sql = "SELECT * FROM orders"; 	
+			String sql = "SELECT * FROM orders ORDER BY order_num"; 	
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {
