@@ -1,6 +1,5 @@
 package miniproject;
 
-import java.util.List;
 
 public class Dobby_jdbc {
 	//메뉴 이름 받아오기

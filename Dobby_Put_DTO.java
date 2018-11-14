@@ -9,8 +9,7 @@ public class Dobby_Put_DTO {
       
    }
 
-   public Dobby_Put_DTO(String put_date, String put_material, int put_amount) {
-      
+   public Dobby_Put_DTO(String put_date, String put_material, int put_amount) {  
       this.put_date = put_date;
       this.put_material = put_material;
       this.put_amount = put_amount;

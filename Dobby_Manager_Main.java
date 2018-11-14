@@ -43,6 +43,7 @@ public class Dobby_Manager_Main extends JFrame implements ActionListener {
 		Object obj = e.getSource();
 		if (obj == mMenu.resetB) {
 			mMenu.ohTableModel.setRowCount(0);
+			
 		} else if (obj == mMenu.putRegisterB) {
 			putRegAction();
 		} else if (obj == mMenu.putRemoveB) {
@@ -84,7 +85,7 @@ public class Dobby_Manager_Main extends JFrame implements ActionListener {
 
 	} // end delAction()
 
-	public void putDecAction() { // 음식 결정 버튼 액션
+	public void putDecAction() { // 입고 결정 버튼 액션
 
 		if (mMenu.putT.getRowCount() == 0) {
 			// 메뉴를 등록하지 않았으면 총 가격이 0이므로 메뉴를 등록한 후에 결정버튼을 누를 수 있도록 메세지 출력
@@ -102,6 +103,13 @@ public class Dobby_Manager_Main extends JFrame implements ActionListener {
 						Integer.parseInt((String) mMenu.putT.getValueAt(i, 2)));
 			}
 			JOptionPane.showMessageDialog(this, "입고 완료.");
+			for(int i = 0; i > mMenu.putTableModel.getRowCount(); i++) {
+				Object name = mMenu.putTableModel.getValueAt(i, 1);
+				Object amount = mMenu.putTableModel.getValueAt(i, 2);
+				updateList(name, amount);
+			}
+			mMenu.stTableModel.setRowCount(0); // 재고 table 초기화
+			stockList(); // 재고 table 다시 불러옴
 			mMenu.putTableModel.setRowCount(0); // 입고 table 초기화
 
 		}
@@ -124,5 +132,10 @@ public class Dobby_Manager_Main extends JFrame implements ActionListener {
 
 			mMenu.stTableModel.addRow(line);
 		}
+	}
+	
+	private void updateList(Object name, Object amount) {
+		Dobby_Put_DAO pdao = Dobby_Put_DAO.getInstance();
+		pdao.updateStocklist(name, amount);
 	}
 }// end class

@@ -54,12 +54,12 @@ public class Dobby_Put_DAO {
       try {
          conn = init();
          String sql = "INSERT INTO PUT " + 
-                   "VALUES (?, ?, ?)";
+        		 	  "VALUES (?, ?, ?)";
          pstmt = conn.prepareStatement(sql);
          pstmt.setString(1, pdto.getPut_date());
          pstmt.setString(2, pdto.getPut_material());
-           pstmt.setInt(3, pdto.getPut_amount());
-           pstmt.executeUpdate();   
+         pstmt.setInt(3, pdto.getPut_amount());
+         pstmt.executeUpdate();   
       } catch (ClassNotFoundException | SQLException e) {
          e.printStackTrace();
       } finally {
@@ -89,7 +89,6 @@ public class Dobby_Put_DAO {
             aList.add(dto);
          }
       } catch (ClassNotFoundException | SQLException e) {
-         
          e.printStackTrace();
       } finally {
          try {
@@ -100,6 +99,31 @@ public class Dobby_Put_DAO {
          }
       }
       return aList;
-   }//end Read_orderlist()
+   } //end Read_orderlist()
    
+   //데이터베이스에 재고내역 갱신
+   public void updateStocklist(Object name, Object amount) {
+	      try {
+	         conn = init();
+	         Dobby_Stock_DTO sdto = new Dobby_Stock_DTO();
+	         Dobby_Put_DTO pdto = new Dobby_Put_DTO();
+	         String sql = "UPDATE stock " + 
+	        		 	  "SET stock_amount = (? + ?) " +
+	        		 	  "WHERE stock_material = '?' " +
+	        		 	  "commit";
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(1, sdto.getStock_amount());
+	         pstmt.setInt(2, (Integer) amount);
+	         pstmt.setString(3, (String) name);
+	         pstmt.executeUpdate();   
+	      } catch (ClassNotFoundException | SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         try {
+	            exit();
+	         } catch (SQLException e) {
+	            e.printStackTrace();
+	         }
+	      }
+   } //updateStocklist()
 }

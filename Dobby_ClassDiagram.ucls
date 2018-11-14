@@ -1,194 +1,220 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="miniproject.Dobby_Consumer_Main" project="JavaLearn" 
-    file="/JavaLearn/src/miniproject/Dobby_Consumer_Main.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="477" y="81"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="miniproject.Dobby_Consumer_Menu" project="JavaLearn" 
-    file="/JavaLearn/src/miniproject/Dobby_Consumer_Menu.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="823" y="220"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="miniproject.Dobby_jdbc" project="JavaLearn" 
-    file="/JavaLearn/src/miniproject/Dobby_jdbc.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="600" y="554"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="miniproject.Dobby_Manager_Main" project="JavaLearn" 
-    file="/JavaLearn/src/miniproject/Dobby_Manager_Main.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="439" y="855"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="miniproject.Dobby_Manager_Menu" project="JavaLearn" 
-    file="/JavaLearn/src/miniproject/Dobby_Manager_Menu.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="895" y="956"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="miniproject.Dobby_Menu_DAO" project="JavaLearn" 
-    file="/JavaLearn/src/miniproject/Dobby_Menu_DAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="243" width="185" x="43" y="600"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="miniproject.Dobby_Menu_DTO" project="JavaLearn" 
-    file="/JavaLearn/src/miniproject/Dobby_Menu_DTO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="112" y="1036"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="8" language="java" name="miniproject.Dobby_Orders_DAO" project="JavaLearn" 
-    file="/JavaLearn/src/miniproject/Dobby_Orders_DAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="363" y="1169"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="9" language="java" name="miniproject.Dobby_Orders_DTO" project="JavaLearn" 
+  <class id="1" language="java" name="miniproject.Dobby_Orders_DTO" project="JavaLearn" 
     file="/JavaLearn/src/miniproject/Dobby_Orders_DTO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="648" y="1178"/>    
+    <position height="315" width="219" x="325" y="-96"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="miniproject.Dobby_Put_DAO" project="JavaLearn" 
+  <class id="2" language="java" name="miniproject.Dobby_jdbc" project="JavaLearn" 
+    file="/JavaLearn/src/miniproject/Dobby_jdbc.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="177" x="1783" y="727"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="miniproject.Dobby_Menu_DTO" project="JavaLearn" 
+    file="/JavaLearn/src/miniproject/Dobby_Menu_DTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="158" x="584" y="-96"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="miniproject.Dobby_Put_DAO" project="JavaLearn" 
     file="/JavaLearn/src/miniproject/Dobby_Put_DAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="243" width="332" x="29" y="268"/>    
+    <position height="243" width="332" x="782" y="-96"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="miniproject.Dobby_Put_DTO" project="JavaLearn" 
-    file="/JavaLearn/src/miniproject/Dobby_Put_DTO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="261" width="186" x="92" y="-32"/>    
+  <class id="5" language="java" name="miniproject.Dobby_Recipe_DTO" project="JavaLearn" 
+    file="/JavaLearn/src/miniproject/Dobby_Recipe_DTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="783" width="174" x="1164" y="-96"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="miniproject.Dobby_Stock_DAO" project="JavaLearn" 
-    file="/JavaLearn/src/miniproject/Dobby_Stock_DAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="122" y="1361"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="13" language="java" name="miniproject.Dobby_Stock_DTO" project="JavaLearn" 
+  <class id="6" language="java" name="miniproject.Dobby_Stock_DTO" project="JavaLearn" 
     file="/JavaLearn/src/miniproject/Dobby_Stock_DTO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="407" y="1522"/>    
+    <position height="297" width="170" x="1378" y="-96"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="miniproject.Dobby_Totals_DTO" project="JavaLearn" 
+  <class id="7" language="java" name="miniproject.Dobby_Totals_DTO" project="JavaLearn" 
     file="/JavaLearn/src/miniproject/Dobby_Totals_DTO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="155" x="627" y="1418"/>    
+    <position height="189" width="155" x="1588" y="-96"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="15">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="16" name="mMain"/>      
-      <multiplicity id="17" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="18">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="19" name="mdao"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="21">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="22" name="dMenu"/>      
-      <multiplicity id="23" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="24">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="25" name="sdao"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
+  <class id="8" language="java" name="miniproject.Dobby_Consumer_Menu" project="JavaLearn" 
+    file="/JavaLearn/src/miniproject/Dobby_Consumer_Menu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="639" width="170" x="2000" y="727"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="miniproject.Dobby_Recipe_DAO" project="JavaLearn" 
+    file="/JavaLearn/src/miniproject/Dobby_Recipe_DAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="232" x="2137" y="-96"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="miniproject.Dobby_Put_DTO" project="JavaLearn" 
+    file="/JavaLearn/src/miniproject/Dobby_Put_DTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="186" x="2419" y="-96"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="miniproject.Dobby_Orders_DAO" project="JavaLearn" 
+    file="/JavaLearn/src/miniproject/Dobby_Orders_DAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="234" x="2645" y="-96"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="miniproject.Dobby_Manager_Menu" project="JavaLearn" 
+    file="/JavaLearn/src/miniproject/Dobby_Manager_Menu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="621" width="212" x="1549" y="1406"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="miniproject.Dobby_Menu_DAO" project="JavaLearn" 
+    file="/JavaLearn/src/miniproject/Dobby_Menu_DAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="185" x="2929" y="-96"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="miniproject.Dobby_Stock_DAO" project="JavaLearn" 
+    file="/JavaLearn/src/miniproject/Dobby_Stock_DAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="219" x="3164" y="-96"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="miniproject.Dobby_Manager_Main" project="JavaLearn" 
+    file="/JavaLearn/src/miniproject/Dobby_Manager_Main.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="194" x="1549" y="727"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="miniproject.Dobby_Consumer_Main" project="JavaLearn" 
+    file="/JavaLearn/src/miniproject/Dobby_Consumer_Main.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="314" x="1783" y="-96"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="17">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="18" name="mMenu"/>      
+      <multiplicity id="19" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="27">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="28" name="pdao"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
+  <association id="20">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="21" name="sdao"/>      
+      <multiplicity id="22" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="30">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="31" name="jdbc"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
+  <association id="23">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="24" name="mMain"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="33">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="34" name="odao"/>      
-      <multiplicity id="35" minimum="0" maximum="1"/>    
+  <association id="26">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="27" name="rdao"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="29">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="30" name="pdao"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="32">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="33" name="dMenu"/>      
+      <multiplicity id="34" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="36">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="37" name="mMenu"/>      
-      <multiplicity id="38" minimum="0" maximum="1"/>    
+  <association id="35">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="36" name="jdbc"/>      
+      <multiplicity id="37" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="39" name="odao"/>      
+      <multiplicity id="40" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="41">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="42" name="mdao"/>      
+      <multiplicity id="43" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

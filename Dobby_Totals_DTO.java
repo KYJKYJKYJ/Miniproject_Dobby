@@ -1,8 +1,8 @@
 package miniproject;
 
 public class Dobby_Totals_DTO {
-	private String order_id;//주문 번호
-	private int total_totalprice;//주문 총 금액
+	private String order_id; //주문 번호
+	private int total_totalprice; //주문 총 금액
 	
 	public Dobby_Totals_DTO() {
 		

@@ -39,7 +39,7 @@ public class Dobby_Manager_Menu extends JPanel {
    JTextArea orderHistoryTA;
    
    
-   String[] cols = { "주문자이름", "음식명", "수량", "금액"};
+   String[] cols = { "주문자이름", "음식명", "수량", "금액" };
    String[] cols2 = { "재료명", "수량"};
    String[] cols3 = { "입고 날짜", "재료명", "수량" };
 
@@ -77,7 +77,7 @@ public class Dobby_Manager_Menu extends JPanel {
       scroll4 = new JScrollPane(orderHistoryTA);
 
       // Jbutton 부분
-      resetB = new JButton("초기화");
+      resetB = new JButton("갱신하기");
       putRegisterB = new JButton("입고 등록");
       putRemoveB = new JButton("입고 취소");
       putDecideB = new JButton("입고 결정");
@@ -185,8 +185,7 @@ public class Dobby_Manager_Menu extends JPanel {
       JPanel putTALPanel = new JPanel(); //입고 등록,취소,결정 라벨 패널
       JPanel putTAPanel = new JPanel();  //입고 등록,취소,결정 버튼 패널
       JPanel putBPanel = new JPanel();
-      
-      
+            
       putTALPanel.add(materialNameL);
       putTALPanel.add(putCountL);
       putTAPanel.add(materialNameBox);
@@ -202,19 +201,15 @@ public class Dobby_Manager_Menu extends JPanel {
       JPanel putLTB2Panel = new JPanel(new GridLayout(3, 1));
       putLTB2Panel.add(putLTBPanel);
       
-
       JPanel putTotalPanel = new JPanel(new GridLayout(2, 1));
       putTotalPanel.add(putPanel);
       putTotalPanel.add(putLTB2Panel);
-
       
       this.setLayout(new GridLayout(1, 3));
       this.add(ohPanel);
       this.add(stPanel);
       this.add(putTotalPanel);
       
-      
-
    }// end Dobby_Manager_Menu()//////
 
 }// end class
