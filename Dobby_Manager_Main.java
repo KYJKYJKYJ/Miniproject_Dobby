@@ -101,13 +101,10 @@ public class Dobby_Manager_Main extends JFrame implements ActionListener {
 			for (int i = 0; i < mMenu.putT.getRowCount(); i++) {
 				pInsert((String) mMenu.putT.getValueAt(i, 0), (String) mMenu.putT.getValueAt(i, 1),
 						Integer.parseInt((String) mMenu.putT.getValueAt(i, 2)));
+				updateList((String) mMenu.putT.getValueAt(i, 1), Integer.parseInt((String) mMenu.putT.getValueAt(i, 2)));
 			}
+			
 			JOptionPane.showMessageDialog(this, "입고 완료.");
-			for(int i = 0; i > mMenu.putTableModel.getRowCount(); i++) {
-				Object name = mMenu.putTableModel.getValueAt(i, 1);
-				Object amount = mMenu.putTableModel.getValueAt(i, 2);
-				updateList(name, amount);
-			}
 			mMenu.stTableModel.setRowCount(0); // 재고 table 초기화
 			stockList(); // 재고 table 다시 불러옴
 			mMenu.putTableModel.setRowCount(0); // 입고 table 초기화
@@ -134,7 +131,7 @@ public class Dobby_Manager_Main extends JFrame implements ActionListener {
 		}
 	}
 	
-	private void updateList(Object name, Object amount) {
+	private void updateList(String name, int amount) {
 		Dobby_Put_DAO pdao = Dobby_Put_DAO.getInstance();
 		pdao.updateStocklist(name, amount);
 	}

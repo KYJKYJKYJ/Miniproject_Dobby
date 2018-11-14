@@ -102,19 +102,16 @@ public class Dobby_Put_DAO {
    } //end Read_orderlist()
    
    //데이터베이스에 재고내역 갱신
-   public void updateStocklist(Object name, Object amount) {
+   public void updateStocklist(String name, int amount) {
 	      try {
 	         conn = init();
-	         Dobby_Stock_DTO sdto = new Dobby_Stock_DTO();
-	         Dobby_Put_DTO pdto = new Dobby_Put_DTO();
 	         String sql = "UPDATE stock " + 
-	        		 	  "SET stock_amount = (? + ?) " +
-	        		 	  "WHERE stock_material = '?' " +
-	        		 	  "commit";
+	        		 	  "SET stock_amount = ((SELECT stock_amount FROM stock WHERE stock_material = ?) + ?) " +
+	        		 	  "WHERE stock_material = ?";
 	         pstmt = conn.prepareStatement(sql);
-	         pstmt.setInt(1, sdto.getStock_amount());
-	         pstmt.setInt(2, (Integer) amount);
-	         pstmt.setString(3, (String) name);
+	         pstmt.setString(1, name);
+	         pstmt.setInt(2, amount);
+	         pstmt.setString(3, name);
 	         pstmt.executeUpdate();   
 	      } catch (ClassNotFoundException | SQLException e) {
 	         e.printStackTrace();
