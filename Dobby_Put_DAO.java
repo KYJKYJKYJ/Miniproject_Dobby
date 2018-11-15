@@ -50,7 +50,8 @@ public class Dobby_Put_DAO {
 
    }// end exit()
    
-   public void insert_putlist(Dobby_Put_DTO pdto) {
+   //DB에 입고 내역 저장
+   public void insertPutlist(Dobby_Put_DTO pdto) {
       try {
          conn = init();
          String sql = "INSERT INTO PUT " + 
@@ -72,7 +73,7 @@ public class Dobby_Put_DAO {
    }//insert_orderlist()
    
    //DB에 저장된 주문내역을 판매자 GUI에 주문내역 테이블에 출력
-   public List<Dobby_Orders_DTO> Read_orderlist(Dobby_Orders_DTO odto) {
+   public List<Dobby_Orders_DTO> readOrderlist(Dobby_Orders_DTO odto) {
       List<Dobby_Orders_DTO> aList = new ArrayList<Dobby_Orders_DTO>();
       try {
          conn = init(); // 리턴해주는 Connection 값을 conn 으로 받는다.

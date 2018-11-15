@@ -23,7 +23,7 @@ public class Dobby_Manager_Menu extends JPanel {
    // 입고 등록, 수정, 삭제 버튼
    JButton putRegisterB, putRemoveB, putDecideB;
    // 초기화 버튼
-   JButton resetB;
+   JButton closeB;
    JComboBox<String> materialNameBox;
 
    // 주문내역 , 재고 수량, 입고 테이블
@@ -77,14 +77,14 @@ public class Dobby_Manager_Menu extends JPanel {
       scroll4 = new JScrollPane(orderHistoryTA);
 
       // Jbutton 부분
-      resetB = new JButton("갱신하기");
+      closeB = new JButton("마감하기");
       putRegisterB = new JButton("입고 등록");
       putRemoveB = new JButton("입고 취소");
       putDecideB = new JButton("입고 결정");
       
       //JComboBox 부분
       String[] name = new String[] { "Chicken", "Sweet", "Soy", "Cheese", "Spicy", "Springonion", "Onion",
-                                   "Honey", "Dduck", "Sacheon", "Galic", "Shrimp"};
+                                   "Honey", "Dduck", "Sacheon", "Garlic", "Shrimp"};
       materialNameBox = new JComboBox<String>(name);
 
       // JTable 부분 (입고)
@@ -96,7 +96,6 @@ public class Dobby_Manager_Menu extends JPanel {
       };
       orderHistoryT = new JTable(ohTableModel);
       scroll = new JScrollPane(orderHistoryT);
-      orderHistoryT.setRowHeight(20);// 라인의 높이
       orderHistoryT.getColumnModel().getColumn(0).setPreferredWidth(30); // 주문자 이름
       orderHistoryT.getColumnModel().getColumn(1).setPreferredWidth(40); // 음식명
       orderHistoryT.getColumnModel().getColumn(2).setPreferredWidth(30); // 수량
@@ -117,7 +116,6 @@ public class Dobby_Manager_Menu extends JPanel {
 
       stockT = new JTable(stTableModel);
       scroll2 = new JScrollPane(stockT);
-      stockT.setRowHeight(20);// 라인의 높이
       stockT.getColumnModel().getColumn(0).setPreferredWidth(50); // 재고 재료명
       stockT.getColumnModel().getColumn(1).setPreferredWidth(50); // 재고 재료 수량
       stockT.getTableHeader().setReorderingAllowed(false); // 테이블 컬럼 이동 불가 설정
@@ -135,7 +133,6 @@ public class Dobby_Manager_Menu extends JPanel {
 
       putT = new JTable(putTableModel);
       scroll3 = new JScrollPane(putT);
-      putT.setRowHeight(20);// 라인의 높이
       putT.getColumnModel().getColumn(0).setPreferredWidth(30); // 입고 날짜
       putT.getColumnModel().getColumn(1).setPreferredWidth(30); // 입고 재료명
       putT.getColumnModel().getColumn(2).setPreferredWidth(30); // 입고 재료 수량
@@ -155,7 +152,7 @@ public class Dobby_Manager_Menu extends JPanel {
       ohL_S_Panel.add("North", ohLPanel);
       ohL_S_Panel.add("Center", scroll);
       ohTAPanel.add("Center", scroll4);  //textarea 스크롤
-      ohTAPanel.add("North", resetB);
+      ohTAPanel.add("North", closeB);
       
       //총 매출금액 TextField 패널
       JPanel tscPanel = new JPanel();

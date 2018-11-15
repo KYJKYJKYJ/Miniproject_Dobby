@@ -43,12 +43,12 @@ public class Dobby_Menu_DAO {
 			conn.close();
 	}// end exit()
 	
-	public String namelist(int id) {
+	public String menuName(int id) {
 		String mName = "";
 		try {
 			conn = init();
 			stmt = conn.createStatement();
-			String sql = "SELECT menu_name, menu_price FROM menu WHERE menu_id = " + id + " "; 	
+			String sql = "SELECT menu_name FROM menu WHERE menu_id = " + id + " "; 	
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {
@@ -66,14 +66,14 @@ public class Dobby_Menu_DAO {
 			}
 		}
 		return mName;
-	}
+	} // end menuName()
 	
-	public int pricelist(int id) {
+	public int menuPrice(int id) {
 		int mPrice = 0;
 		try {
 			conn = init();
 			stmt = conn.createStatement();
-			String sql = "SELECT menu_name, menu_price FROM menu WHERE menu_id = " + id + " "; 	
+			String sql = "SELECT menu_price FROM menu WHERE menu_id = " + id + " "; 	
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {
@@ -91,21 +91,21 @@ public class Dobby_Menu_DAO {
 			}
 		}
 		return mPrice;
-	}
+	} // end menuPrice()
 	
-	public int idlist(String name) {
+	public int menuId(String name) {
 		int mId = 0;
 		try {
 			conn = init();
 			stmt = conn.createStatement();
-			String sql = "SELECT recipe_id FROM menu WHERE menu_name = '" + name + "' "; 	
+			String sql = "SELECT menu_id FROM menu WHERE menu_name = '" + name + "' "; 	
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {
 				Dobby_Menu_DTO mdto = new Dobby_Menu_DTO();
-				mdto.setRecipe_id(rs.getInt("recipe_id"));
-				mId = mdto.getRecipe_id();
-			}
+				mdto.setMenu_id(rs.getInt("menu_id"));
+				mId = mdto.getMenu_id();
+			}		
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -116,5 +116,5 @@ public class Dobby_Menu_DAO {
 			}
 		}
 		return mId;
-	}
+	} // end menuId()
 }
