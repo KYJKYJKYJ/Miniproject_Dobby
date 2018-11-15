@@ -7,19 +7,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Dobby_Join_DAO {
+public class Dobby_RecipeJoin_DAO {
 	private Connection conn;
 	private Statement stmt;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
-	private static Dobby_Join_DAO jdao = new Dobby_Join_DAO();
+	private static Dobby_RecipeJoin_DAO jdao = new Dobby_RecipeJoin_DAO();
 
-	private Dobby_Join_DAO() {
+	private Dobby_RecipeJoin_DAO() {
 
 	}
 
-	public static Dobby_Join_DAO getInstance() {
+	public static Dobby_RecipeJoin_DAO getInstance() {
 		return jdao;
 	}
 
@@ -56,7 +56,7 @@ public class Dobby_Join_DAO {
 
 			String sql = "UPDATE stock SET stock_amount = " +
 						 "(SELECT stock_amount FROM stock s, recipe r, menu m " +
-						 " WHERE r.recipe_id = m.recipe_id AND m.recipe_id = s.recipe_id AND m.recipe_id = ?) " + 
+						 "WHERE r.recipe_id = m.recipe_id AND m.recipe_id = s.recipe_id AND m.recipe_id = ?) " + 
 						 "- ? " + 
 						 "WHERE stock_material = ?";
 

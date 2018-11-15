@@ -52,6 +52,19 @@ public class Dobby_Manager_Main extends JFrame {
 		}
 	} // end stockList()
 
+	// DAO를 통해 판매자 주문 내역에서 가격을 합산해서 테이블에 삽입
+	public void totalPricelist() {
+		int totalPrice = 0;
+		for (int i = 0; i < mMenu.ohTableModel.getRowCount(); i++) {
+			totalPrice += (int) mMenu.ohTableModel.getValueAt(i, 3);
+			System.out.println(totalPrice);
+		}
+		
+		Dobby_Totals_DAO tdao = Dobby_Totals_DAO.getInstance();
+		tdao.update_Totallist(totalPrice);
+		mMenu.totalSalesCountTF.setText(Integer.toString(tdao.read_Totallist()));
+	}// end read_orderlist()
+
 	private class Dobby_CloseB_listener implements ActionListener {
 		// 리셋 버튼 , 주문내역 테이블과 DB의 주문 내역 삭제
 		@Override
@@ -127,7 +140,7 @@ public class Dobby_Manager_Main extends JFrame {
 	} // end Dobby_putRemoveB_listener
 
 	private class Dobby_putDecideB_listener implements ActionListener {
-		//입고 재고 결정 버튼
+		// 입고 재고 결정 버튼
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton btn = (JButton) e.getSource();
@@ -174,77 +187,4 @@ public class Dobby_Manager_Main extends JFrame {
 			pdao.updateStocklist(name, amount);
 		} // end updateList()
 	} // end Dobby_putDecideB_listener
-
-	/*
-	 * @Override public void actionPerformed(ActionEvent e) { Object obj =
-	 * e.getSource(); if (obj == mMenu.closeB) { mMenu.ohTableModel.setRowCount(0);
-	 * 
-	 * } else if (obj == mMenu.putRegisterB) { putRegAction(); } else if (obj ==
-	 * mMenu.putRemoveB) { putDelAction(); } else if (obj == mMenu.putDecideB) {
-	 * putDecAction(); }
-	 * 
-	 * }
-	 * 
-	 * private void putRegAction() { // 입고 등록버튼 액션 if
-	 * (mMenu.putCountTF.getText().equals("")) { JOptionPane.showMessageDialog(this,
-	 * "수량을 입력해주세요!", "등록 오류!", JOptionPane.ERROR_MESSAGE); return; } else {
-	 * Calendar cal = Calendar.getInstance();// 현재 시간 구하기. SimpleDateFormat sdfm =
-	 * new SimpleDateFormat("yyyy-MM-dd"); String time = sdfm.format(cal.getTime());
-	 * String[] row = new String[3]; row[0] = time; row[1] = (String)
-	 * mMenu.materialNameBox.getSelectedItem(); row[2] =
-	 * mMenu.putCountTF.getText().trim();
-	 * 
-	 * mMenu.putTableModel.addRow(row); // 입고 정보를 받아서 테이블에 삽입 }
-	 * 
-	 * // 음식 정보 테이블 삽입 후 텍스트 필드 초기화 mMenu.putCountTF.setText("");
-	 * 
-	 * } // end regAction()
-	 * 
-	 * private void putDelAction() { // 입고 취소 버튼 액션 int row =
-	 * mMenu.putT.getSelectedRow(); if (row == -1) {
-	 * JOptionPane.showMessageDialog(this, "입고 취소 행을 선택해주세요!", "입고 오류!",
-	 * JOptionPane.ERROR_MESSAGE); return; } // 삭제할 게 없으면 출력
-	 * mMenu.putTableModel.removeRow(row);// 행 삭제
-	 * 
-	 * } // end delAction()
-	 * 
-	 * public void putDecAction() { // 입고 결정 버튼 액션
-	 * 
-	 * if (mMenu.putT.getRowCount() == 0) { // 메뉴를 등록하지 않았으면 총 가격이 0이므로 메뉴를 등록한 후에
-	 * 결정버튼을 누를 수 있도록 메세지 출력 JOptionPane.showMessageDialog(this, "입고 등록해주세요!",
-	 * "등록 오류!", JOptionPane.ERROR_MESSAGE); return; }
-	 * 
-	 * int chk = JOptionPane.showConfirmDialog(this, "입고 결정하시겠습니까?", "입고 결정",
-	 * JOptionPane.YES_NO_OPTION);
-	 * 
-	 * if (chk == JOptionPane.NO_OPTION) { return; } else if (chk ==
-	 * JOptionPane.YES_OPTION) { for (int i = 0; i < mMenu.putT.getRowCount(); i++)
-	 * { pInsert((String) mMenu.putT.getValueAt(i, 0), (String)
-	 * mMenu.putT.getValueAt(i, 1), Integer.parseInt((String)
-	 * mMenu.putT.getValueAt(i, 2))); updateList((String) mMenu.putT.getValueAt(i,
-	 * 1), Integer.parseInt((String) mMenu.putT.getValueAt(i, 2))); }
-	 * 
-	 * JOptionPane.showMessageDialog(this, "입고 완료");
-	 * mMenu.stTableModel.setRowCount(0); // 재고 table 초기화 stockList(); // 재고 table
-	 * 다시 불러옴 mMenu.putTableModel.setRowCount(0); // 입고 table 초기화
-	 * 
-	 * } } // end decAction()
-	 * 
-	 * public void pInsert(String put_date, String put_material, int put_amount) {
-	 * Dobby_Put_DAO pdao = Dobby_Put_DAO.getInstance(); Dobby_Put_DTO pdto = new
-	 * Dobby_Put_DTO(put_date, put_material, put_amount); pdao.insert_putlist(pdto);
-	 * }
-	 * 
-	 * public void stockList() { Dobby_Stock_DAO sdao =
-	 * Dobby_Stock_DAO.getInstance(); List<Dobby_Stock_DTO> sList =
-	 * sdao.readStocklist();
-	 * 
-	 * for (Dobby_Stock_DTO sdto : sList) { Object[] line = new Object[2]; line[0] =
-	 * sdto.getStock_material(); line[1] = sdto.getStock_amount();
-	 * 
-	 * mMenu.stTableModel.addRow(line); } }
-	 * 
-	 * private void updateList(String name, int amount) { Dobby_Put_DAO pdao =
-	 * Dobby_Put_DAO.getInstance(); pdao.updateStocklist(name, amount); }
-	 */
 }// end class

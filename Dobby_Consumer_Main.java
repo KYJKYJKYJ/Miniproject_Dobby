@@ -232,7 +232,7 @@ public class Dobby_Consumer_Main extends JFrame {
 
 		private void dcAction() { // 결정버튼 액션
 			/*Dobby_Orders_DAO odao = Dobby_Orders_DAO.getInstance();*/
-			Dobby_Join_DAO jdao = Dobby_Join_DAO.getInstance();
+			Dobby_RecipeJoin_DAO jdao = Dobby_RecipeJoin_DAO.getInstance();
 
 			if (cMenu.fullPriceTF.getText().equals(Integer.toString(0))) {
 				// 메뉴를 등록하지 않았으면 총 가격이 0이므로 메뉴를 등록한 후에 결정버튼을 누를 수 있도록 메세지 출력
@@ -259,6 +259,7 @@ public class Dobby_Consumer_Main extends JFrame {
 				mMain.stockList();
 				Dobby_orderTAprint();
 				Dobby_orderHistoryInsert();
+				mMain.totalPricelist();
 
 				JOptionPane.showMessageDialog(cMenu, "주문이 완료 되었습니다.");
 				cMenu.order_idTF.setText("");
@@ -289,7 +290,7 @@ public class Dobby_Consumer_Main extends JFrame {
 
 			mMain.mMenu.orderHistoryTA.append("\r\n");
 
-		}// end orderTA()
+		}// end orderTAprint()
 
 		// 판매자 주문 내역 테이블 삽입
 		private void Dobby_orderHistoryInsert() {
@@ -305,7 +306,6 @@ public class Dobby_Consumer_Main extends JFrame {
 				line[3] = odto.getOrder_sumprice();
 				mMain.mMenu.ohTableModel.addRow(line);
 			}
-		}// end orderHistoryInsert()///////
+		}// end orderHistoryInsert()
 	} // end Dobby_mDecideB
-
 } // end class
