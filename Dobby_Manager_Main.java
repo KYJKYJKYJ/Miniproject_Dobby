@@ -57,7 +57,6 @@ public class Dobby_Manager_Main extends JFrame {
 		int totalPrice = 0;
 		for (int i = 0; i < mMenu.ohTableModel.getRowCount(); i++) {
 			totalPrice += (int) mMenu.ohTableModel.getValueAt(i, 3);
-			System.out.println(totalPrice);
 		}
 		
 		Dobby_Totals_DAO tdao = Dobby_Totals_DAO.getInstance();
